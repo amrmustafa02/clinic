@@ -1,0 +1,136 @@
+<body>
+    <section>
+        <div class="container-sm " style="width: 80%;">
+            <div class="" style="border-radius: 25px;">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                       <form class="img-thumbnail pe-3 mt-3 h-90">
+                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="ms-3"></i>
+
+                                <div class="form-outline flex-fill">
+                                    <label class="form-label" for="form3Example3c">Name</label>
+
+                                    <input type="email" id="form3Example3c" class="form-control" />
+
+                                </div>
+                            </div>
+
+
+                            <!-- email -->
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example3c">Email</label>
+
+                                    <input type="email" id="form3Example3c" class="form-control" />
+                                </div>
+                            </div>
+                            <!-- email -->
+
+                            <!-- password -->
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example4c">Password</label>
+                                    <input type="password" id="form3Example4c" class="form-control" />
+                                </div>
+                            </div>
+                            <!-- password -->
+
+
+                            <!-- repeat password -->
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label" for="form3Example4cd">Repeat your
+                                        password</label>
+                                    <input type="password" id="form3Example4cd" class="form-control" />
+                                </div>
+                            </div>
+                            <!-- repeat password -->
+
+
+                            <!-- age and phone -->
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+
+                                <diV class="row">
+
+                                    <div class="col">
+                                        <label class="form-label" for="form3Example1c">Age</label>
+                                        <input type="text" id="form3Example1c" class="form-control" />
+                                    </div>
+
+                                    <div class="col">
+                                        <label class="form-label" for="form3Example1c">Phone</label>
+                                        <input type="text" id="form3Example1c" class="form-control" />
+                                    </div>
+
+                                </diV>
+                                <!-- age and phone -->
+
+                            </div>
+
+
+                            <!-- role gander -->
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-select-sm  ms-3 mb-4 ">
+                                        <option selected disabled>Role</option>
+                                        <option value="1">Doctor</option>
+                                        <option value="2">Patient</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col">
+                                    <select class="form-select-sm  mb-4 ms-2">
+                                        <option selected disabled>Gander</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+                            <!-- role gander  -->
+
+                            <!-- login  -->
+                            <div class="col-sm">
+
+                                <input class="form-check-input ms-3" type="checkbox" value="true" id="remember-me"
+                                    [ngStyle]="{'background-color': colorOfCheckBox}" (click)="clickOnRemeberMe()" />
+
+                                <label class="form-check-label ms-2 mb-3" for="form2Example3">
+                                    Remember me
+                                </label>
+
+                            </div>
+                            <!-- login  -->
+
+                            <div class="d-flex justify-content-center mx-4 mb-3">
+                                <button type="button" class="btn btn-primary btn-lg"
+                                    id="my-register-btn">Register</button>
+                            </div>
+                            <div class="col-sm justify-content-center" style=" text-align: center;" id="btn-login">
+                                <button class="btn info" (click)="clickOnLogin()">Already Have Account?
+                                    Login</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                        <img src="/assets/images/doctor.jpg" class="img-fluid">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
