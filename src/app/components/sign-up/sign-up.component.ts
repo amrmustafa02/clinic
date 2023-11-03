@@ -11,11 +11,14 @@ export class SignUpComponent {
   remeberMe = true;
   colorOfCheckBox = "#ffffff";
   rangeAge = [1];
+  role = '';
   // #59e4a8
-  constructor(private route: Router) { }
+  constructor(private route: Router) {
+  this.role =  this.route!.getCurrentNavigation()!.extras!.state!['role'];
+  }
 
   ngOnInit() {
-  
+
   }
   clickOnRemeberMe() {
     // alert("hellow")

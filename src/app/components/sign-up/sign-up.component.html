@@ -4,8 +4,8 @@
             <div class="" style="border-radius: 25px;">
                 <div class="row justify-content-center">
                     <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                       <form class="img-thumbnail pe-3 mt-3 h-90">
-                        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+                        <form class="img-thumbnail pe-3 mt-3 h-90">
+                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
                             <div class="d-flex flex-row align-items-center mb-4">
                                 <i class="ms-3"></i>
@@ -75,22 +75,32 @@
                             </div>
 
 
-                            <!-- role gander -->
-                            <div class="row">
-                                <div class="col">
-                                    <select class="form-select-sm  ms-3 mb-4 ">
-                                        <option selected disabled>Role</option>
-                                        <option value="1">Doctor</option>
-                                        <option value="2">Patient</option>
+                            <!-- gander -->
+                            <div class="row ms-1">
+                                <div class="col" style="text-align: start;">
+                                    <select class="form-select-sm  mb-4 ">
+                                        <option selected disabled>Gander</option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
                                     </select>
 
                                 </div>
 
-                                <div class="col">
-                                    <select class="form-select-sm  mb-4 ms-2">
-                                        <option selected disabled>Gander</option>
-                                        <option value="1">Male</option>
-                                        <option value="2">Female</option>
+
+                                <div class="col" *ngIf="role=='d'" style="text-align: start;">
+                                    <select class="form-select-sm   mb-4 ">
+                                        <option selected disabled>Specialization</option>
+                                        <option value="1">General Practitioner (GP)</option>
+                                        <option value="2">Cardiologist</option>
+                                        <option value="3">Pediatrician</option>
+                                        <option value="4">Orthopedic Surgeon</option>
+                                        <option value="5">Dermatologist</option>
+                                        <option value="6">Gynecologist</option>
+                                        <option value="7">Anesthesiologist</option>
+                                        <option value="8">Radiologist</option>
+                                        <option value="9">Neurologist</option>
+                                        <option value="10">Psychiatrist</option>
+
                                     </select>
 
                                 </div>
