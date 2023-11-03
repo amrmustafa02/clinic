@@ -37,6 +37,6 @@ export class LoginComponent {
     }
   }
   clickOnDonHaveAccount() {
-    this.route.navigate(['/sign-up'],);
+    this.route.navigate(['/sign-up'], { replaceUrl: true });
   }
 }

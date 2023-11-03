@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { SignUpRequestBody } from 'src/app/models/auth/sign.up.request.body';
+import { SignUpResponseBody } from 'src/app/models/auth/sign.up.response.body';
+import { FormsModule } from '@angular/forms';
+import { UserUtils } from '../../utils/user.utils';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,11 +14,23 @@ import { Router } from '@angular/router';
 export class SignUpComponent {
   remeberMe = true;
   colorOfCheckBox = "#ffffff";
-  rangeAge = [1];
+
   role = '';
-  // #59e4a8
+  @Input() name: string = '';
+  email = '';
+  password = '';
+  confirmPassowrd = "";
+  age = '';
+  phone = '';
+
+
   constructor(private route: Router) {
-  this.role =  this.route!.getCurrentNavigation()!.extras!.state!['role'];
+    if (UserUtils.role.length == 0) {
+      this.role = this.route!.getCurrentNavigation()!.extras!.state!['role'];
+      UserUtils.role = this.role;
+    } else {
+      this.role = UserUtils.role;
+    }
   }
 
   ngOnInit() {
@@ -41,6 +57,10 @@ export class SignUpComponent {
     }
   }
   clickOnLogin() {
-    this.route.navigate(['/login'],);
+    this.route.navigate(['/login'], { replaceUrl: true });
+  }
+
+  clickOnRegister() {
+    // name = nameInput.;
   }
 }

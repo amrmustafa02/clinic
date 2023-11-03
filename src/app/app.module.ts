@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { LoginComponent } from './components/login/login.component';
-import { ChooseRoleComponent } from './components/choose-role/choose-role.component';
+import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { ChooseRoleComponent } from './components/auth/choose-role/choose-role.component';
 
 @NgModule({
   declarations: [

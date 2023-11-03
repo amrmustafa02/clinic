@@ -14,11 +14,11 @@ export class ChooseRoleComponent {
   }
 
   clickOnDoctor(): void {
-    this.route.navigate(["/sign-up"], { state: { role: 'd' } });
+    this.route.navigate(["/sign-up"], { state: { role: 'd' }, replaceUrl: true });
 
-  } 
+  }
   clicOnPatient(): void {
-    this.route.navigate(["/sign-up"], { state: { role: 'p' } });
+    this.route.navigate(["/sign-up"], { state: { role: 'p' }, replaceUrl: true });
   }
 
 }
