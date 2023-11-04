@@ -1,9 +1,142 @@
 #my-register-btn {
     width: 70%;
-    background-color: #59e4a8;
-    border-color: #59e4a8;
+    background-color: #00BFA6;
+    border-color: #00BFA6;
 }
 
-#remember-me{
-    border-color: #59e4a8;
+#remember-me {
+    /* border-color: #00BFA6; */
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color:white
 }
+#remember-me:checked{
+    background:#00BFA6;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color:white
+}
+body {
+
+    background-image: url("src/assets/images/bg_user.jpeg");
+    background-size: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+label{ 
+    color: white;
+    
+}
+#form {
+    /* max-height: 50%; */
+
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+section{
+    max-height: 100%;
+}
+
+
+/* 
+input {
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: white
+} */
+#nameInput{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: black
+    
+}
+
+
+#emailInput{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: black
+    
+}
+
+
+#passwordInput{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: black
+    
+}
+
+
+
+#ageInput{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: black
+    
+}
+
+#phoneInput{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: black
+    
+}
+
+select{
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* label {
+    color: #000;
+} */

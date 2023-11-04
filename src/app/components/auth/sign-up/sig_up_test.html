@@ -76,7 +76,10 @@
                                             <div class="col">
                                                 <label class="form-label">Age</label>
                                                 <input type="text" id="ageInput" class="form-control" />
-                                              
+                                                <div *ngIf="this.age == 0">
+                                                    <label class="form-label" style="color: red;">Please enter your
+                                                        age</label>
+                                                </div>
                                             </div>
 
                                             <div class="col">
