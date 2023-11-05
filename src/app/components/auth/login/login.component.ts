@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserUtils } from '../../utils/user.utils';
+import { ToastrService } from 'ngx-toastr';
+import { ApiData } from 'src/app/api.data';
+import { SignInResponseBody } from 'src/app/models/auth/sign.respoonse.body';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { UserModel } from 'src/app/models/home/user.model';
 
 @Component({
   selector: 'app-login',
@@ -9,34 +16,91 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   remeberMe = true;
   colorOfCheckBox = "#ffffff";
+  email?: string;
+  password?: string;
+  role: string = "";
 
-  // #59e4a8
-  constructor(private route: Router) { }
+  constructor(private route: Router, private toast: ToastrService, private httpClient: HttpClient) {
+
+  }
 
   ngOnInit() {
 
   }
-  clickOnRemeberMe() {
-    // alert("hellow")
-    // this.colorOfCheckBox = "#ffffff"; 
+
+  clickOnDonHaveAccount() {
+    this.route.navigate(['/sign-up'], { replaceUrl: true });
+  }
+
+  clickOnLogin() {
+    this.extractFields();
+    if (this.handleFields()) {
+
+      this.sendLoginRequest(this.email!, this.password!).subscribe(
+        (data: SignInResponseBody) => {
+          // console.log(data);
+
+          UserUtils.user = data.user as UserModel;
+          UserUtils.token = data.token!;
+
+          console.log(UserUtils.user);
+
+          if (this.remeberMe == true) {
+            UserUtils.saveUserData(data.user as UserModel, data.token);
+          }
+
+          if (UserUtils.role == "doctor") {
+            this.route.navigate(["/doctor/home"], { replaceUrl: true });
+          } else {
+            this.route.navigate(["/patient/home"], { replaceUrl: true });
+          }
+        }
+      );
+    }
+  }
+
+  extractFields() {
+    const email = document.getElementById(
+      'emailInput',
+    ) as HTMLInputElement | null;
+    const password = document.getElementById(
+      'passwordInput',
+    ) as HTMLInputElement | null
 
     const checkbox = document.getElementById(
       'remember-me',
     ) as HTMLInputElement | null;
 
-    if (checkbox != null) {
-      // ✅ Set checkbox checked
-      if (checkbox.checked == true) {
-        this.colorOfCheckBox = "#59e4a8";
-      } else {
-        this.colorOfCheckBox = "#ffffff";
-      }
 
-      // ✅ Set checkbox unchecked
-      // checkbox.checked = false;
-    }
+    this.remeberMe = checkbox!.checked;
+    this.email = email!.value;
+    this.password = password!.value;
+
   }
-  clickOnDonHaveAccount() {
-    this.route.navigate(['/sign-up'], { replaceUrl: true });
+
+  handleFields() {
+
+    var isSuccess: boolean = true;
+
+    if (this.email!.length == 0 && !UserUtils.isEmailFormat(this.email ?? "")) {
+      // this.email = undefined
+      isSuccess = false;
+      this.toast.error('Please enter your vaild email');
+    }
+
+    if (this.password?.length == 0) {
+      // this.password = undefined;
+      this.toast.error('Please enter your password');
+      isSuccess = false;
+    }
+
+    return isSuccess;
+  }
+
+  sendLoginRequest(email: string, password: string): Observable<SignInResponseBody> {
+    return this.httpClient.post<SignInResponseBody>(ApiData.baseUrl + ApiData.loginEndPoint, {
+      "email": email,
+      "password": password
+    });
   }
 }

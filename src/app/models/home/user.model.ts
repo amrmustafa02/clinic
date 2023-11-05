@@ -4,6 +4,8 @@ export class UserModel{
     email?: string
     password?: string
     age?: number
+    role?:string
+    specialization?: string
     phone?: string
     gender?: string
     updatedAt?: string

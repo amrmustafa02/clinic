@@ -3,7 +3,12 @@
     background-color: #00BFA6;
     border-color: #00BFA6;
 }
-
+#go-to-login{
+    color:white;
+}
+#go-to-login:hover{
+    color:#00BFA6;
+}
 #remember-me {
     /* border-color: #00BFA6; */
     background: rgba(255, 255, 255, 0.09);

@@ -10,13 +10,22 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'clinic-reservation';
 
-  constructor(route:Router) {
+  constructor(route: Router) {
     if (UserUtils.checkIfRemeberMe()) {
+
       console.log("enter");
-       UserUtils.getUserData();
-       route.navigate(["patient/home"]);
-    }else{
-      route.navigate(["/role"]);
+      UserUtils.getUserData();
+      console.log(UserUtils.user);
+
+
+      if (UserUtils.user.role == "doctor") {
+        route.navigate(["/doctor/home"], { replaceUrl: true });
+      } else {
+        route.navigate(["/patient/home"], { replaceUrl: true });
+      }
+    } else {
+      UserUtils.role = "";
+      route.navigate(["/role"], { replaceUrl: true });
     }
   }
 }

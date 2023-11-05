@@ -20,7 +20,14 @@ export class SignUpComponent {
   remeberMe = false;
   colorOfCheckBox = "#ffffff";
 
-
+  multilineString: string = `
+Please enter password should
+,Contain at least one digit
+,Contain at least one lowercase letter.
+,Contain at least one uppercase letter.
+,Contain at least one alphanumeric character (letter or digit).
+,Be at least 8 characters in length
+`;
 
   role = '';
   name?= "";
@@ -75,19 +82,35 @@ export class SignUpComponent {
     this.toast.info('Please wait', '', { timeOut: 1000 });
 
     try {
-      var response = this.addNewUser(body);
+      var response: Observable<SignUpResponseBody>;
+      if (this.role == "doctor") {
+        response = this.addNewDoctor(body);
+
+      } else {
+        response = this.addNewUser(body);
+
+      }
+
       response.subscribe((data) => {
 
-        console.log(data.token);
+        // console.log(data.token);
 
+        UserUtils.user = data.result as UserModel;
+        UserUtils.token = data.token!;
+
+        console.log(UserUtils.user);
+
+         
         if (this.remeberMe == true) {
-          UserUtils.saveUserData(data);
-        } else {
-          UserUtils.user = data.result as UserModel;
-          UserUtils.token = data.token!;
+          UserUtils.saveUserData(data.result as UserModel, data.token!);
         }
 
-        this.route.navigate(["/patient/home"], { replaceUrl: true });
+        if (UserUtils.role == "doctor") {
+          this.route.navigate(["/doctor/home"], { replaceUrl: true });
+        } else {
+          this.route.navigate(["/patient/home"], { replaceUrl: true });
+        }
+        
 
 
       }, (err: HttpErrorResponse) => {
@@ -161,26 +184,28 @@ export class SignUpComponent {
     if (this.name!.length == 0) {
       // this.name = undefined;
       isSuccess = false;
+      this.toast.error('Please enter enter name.');
     }
 
     if (this.email!.length == 0 && !this.isEmailFormat(this.email ?? "")) {
       // this.email = undefined
       isSuccess = false;
-      this.toast.error('Please enter your name');
+      this.toast.error('Please enter vaild email.');
     }
 
     if (this.password?.length == 0) {
       // this.password = undefined;
       this.passwordMessage = "Please enter your password";
-      this.toast.error('Please enter your password');
+      this.toast.error(this.multilineString);
 
       isSuccess = false;
 
     }
+
     else if (!this.isPasswordValid(this.password ?? "")) {
       // this.password = undefined
       this.passwordMessage = "Please vaild password";
-      this.toast.error('Please vaild password at least 1 uppercase ');
+      this.toast.error('Please vaild password');
       isSuccess = false;
     }
 
@@ -202,7 +227,7 @@ export class SignUpComponent {
       this.toast.error('Please enter vaild phone');
     }
 
-    if (this.specialization == ''&& this.role=="doctor") {
+    if (this.specialization == '' && this.role == "doctor") {
       isSuccess = false;
       this.toast.error('Please enter your specialization');
     }

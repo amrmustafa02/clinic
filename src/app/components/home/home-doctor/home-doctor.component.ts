@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserUtils } from '../../utils/user.utils';
 
 @Component({
   selector: 'app-home-doctor',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-doctor.component.css']
 })
 export class HomeDoctorComponent {
+ name?:string;
 
+ constructor() {
+  this.name = UserUtils.user.name;
+ }
 }

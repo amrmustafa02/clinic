@@ -22,6 +22,12 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     color:white
 }
+#go-to-register{
+    color:white;
+}
+#go-to-register:hover{
+    color:#00BFA6;
+}
 body {
 
     background-image: url("src/assets/images/bg_user.jpeg");
