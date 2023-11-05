@@ -76,7 +76,7 @@
                                             <div class="col">
                                                 <label class="form-label">Age</label>
                                                 <input type="text" id="ageInput" class="form-control" />
-                                              
+
                                             </div>
 
                                             <div class="col">
@@ -108,18 +108,20 @@
 
 
                                         <div class="col" *ngIf="role=='doctor'" style="text-align: start;">
-                                            <select class="form-select-sm   mb-4 " id="filedInput">
+                                            <select class="form-select-sm   mb-4 " id="filedInput" #specialization
+                                                (change)="onSpecializationChange(specialization.value)">
                                                 <option selected disabled>Specialization</option>
-                                                <option value="1">General Practitioner (GP)</option>
-                                                <option value="2">Cardiologist</option>
-                                                <option value="3">Pediatrician</option>
-                                                <option value="4">Orthopedic Surgeon</option>
-                                                <option value="5">Dermatologist</option>
-                                                <option value="6">Gynecologist</option>
-                                                <option value="7">Anesthesiologist</option>
-                                                <option value="8">Radiologist</option>
-                                                <option value="9">Neurologist</option>
-                                                <option value="10">Psychiatrist</option>
+                                                <option value="General Practitioner (GP)">General Practitioner (GP)
+                                                </option>
+                                                <option value="Cardiologist">Cardiologist</option>
+                                                <option value="Pediatrician">Pediatrician</option>
+                                                <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                                                <option value="Dermatologist">Dermatologist</option>
+                                                <option value="Gynecologist">Gynecologist</option>
+                                                <option value="Anesthesiologist">Anesthesiologist</option>
+                                                <option value="Radiologist">Radiologist</option>
+                                                <option value="Neurologist9">Neurologist</option>
+                                                <option value="Psychiatrist">Psychiatrist</option>
 
                                             </select>
 
@@ -133,8 +135,7 @@
                                     <div class="col-sm">
                                         <!-- [ngStyle]="{'background-color': colorOfCheckBox}" -->
 
-                                        <input class="form-check-input ms-3" type="checkbox" id="remember-me"
-                                            (click)="clickOnRemeberMe()" />
+                                        <input class="form-check-input ms-3" type="checkbox" id="remember-me" />
 
                                         <label class="form-check-label ms-2 mb-3">
                                             Remember me
@@ -151,8 +152,9 @@
 
                                 </form>
                                 <div class="col-sm justify-content-center" style=" text-align: center;" id="btn-login">
-                                    <label>Already Have Account? <button class="btn info"  (click)="clickOnLogin()">Login</button></label>
-                                  
+                                    <label>Already Have Account? <button class="btn info"
+                                            (click)="clickOnLogin()">Login</button></label>
+
                                 </div>
                             </div>
 

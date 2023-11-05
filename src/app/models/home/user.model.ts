@@ -1,10 +1,4 @@
-export interface SignUpResponseBody {
-    message?: string;
-    result?: User;
-    token?: string;
-}
-
-export interface User {
+export class UserModel{
     id?: number
     name?: string
     email?: string

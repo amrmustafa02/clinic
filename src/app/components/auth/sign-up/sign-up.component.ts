@@ -7,6 +7,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ApiData } from 'src/app/api.data';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { UserModel } from 'src/app/models/home/user.model';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 
 export class SignUpComponent {
-  remeberMe = true;
+  remeberMe = false;
   colorOfCheckBox = "#ffffff";
 
 
@@ -31,7 +32,7 @@ export class SignUpComponent {
   gender?: string = 'male';
 
   passwordMessage = "";
-
+  specialization = '';
 
 
   constructor(private route: Router, private httpClient: HttpClient, private toast: ToastrService) {
@@ -46,28 +47,7 @@ export class SignUpComponent {
   ngOnInit() { }
 
 
-  clickOnRemeberMe() {
 
-
-    const checkbox = document.getElementById(
-      'remember-me',
-    ) as HTMLInputElement | null;
-
-
-    // this.name = name!.value!;
-
-    if (checkbox != null) {
-      // ✅ Set checkbox checked
-      if (checkbox.checked == true) {
-        this.colorOfCheckBox = "#00BFA6";
-      } else {
-        this.colorOfCheckBox = "#ffffff";
-      }
-
-      // ✅ Set checkbox unchecked
-      // checkbox.checked = false;
-    }
-  }
   clickOnLogin() {
     this.route.navigate(['/login'], { replaceUrl: true });
   }
@@ -95,20 +75,27 @@ export class SignUpComponent {
     this.toast.info('Please wait', '', { timeOut: 1000 });
 
     try {
-      var response = this.sendPostRequest(body);
+      var response = this.addNewUser(body);
       response.subscribe((data) => {
 
         console.log(data.token);
 
-        // this.toast.success('Please wait', 'Succes login');
-        this.route.navigate(["/patient/home"], { state: data, replaceUrl: true });
+        if (this.remeberMe == true) {
+          UserUtils.saveUserData(data);
+        } else {
+          UserUtils.user = data.result as UserModel;
+          UserUtils.token = data.token!;
+        }
+
+        this.route.navigate(["/patient/home"], { replaceUrl: true });
+
 
       }, (err: HttpErrorResponse) => {
         if (err.status == 409)
           this.toast.error('User elready exsit');
-        else if(err.status==400){
+        else if (err.status == 400) {
           console.log(err.error);
-          
+
           this.toast.error("some thing went wrong ");
 
         }
@@ -121,6 +108,10 @@ export class SignUpComponent {
 
   onGenderChange(value: string) {
     this.gender = value;
+  }
+  onSpecializationChange(value: string) {
+    this.specialization = value;
+    console.log(this.specialization);
   }
 
 
@@ -139,10 +130,6 @@ export class SignUpComponent {
       'passwordInput',
     ) as HTMLInputElement | null;
 
-    // const confirmPassowrdInput = document.getElementById(
-    //   'cPasswordInput',
-    // ) as HTMLInputElement | null;
-
     const ageInput = document.getElementById(
       'ageInput',
     ) as HTMLInputElement | null;
@@ -151,6 +138,11 @@ export class SignUpComponent {
       'phoneInput',
     ) as HTMLInputElement | null;
 
+    const checkbox = document.getElementById(
+      'remember-me',
+    ) as HTMLInputElement | null;
+
+
 
     this.name = nameInput!.value;
     this.email = emailInput!.value;
@@ -158,6 +150,7 @@ export class SignUpComponent {
     // this.cPassword = confirmPassowrdInput!.value!;
     this.age = +ageInput!.value;
     this.phone = phoneInput!.value;
+    this.remeberMe = checkbox!.checked;
 
 
   }
@@ -173,13 +166,13 @@ export class SignUpComponent {
     if (this.email!.length == 0 && !this.isEmailFormat(this.email ?? "")) {
       // this.email = undefined
       isSuccess = false;
-      this.toast.error('Please enter your name', 'Name empty');
+      this.toast.error('Please enter your name');
     }
 
     if (this.password?.length == 0) {
       // this.password = undefined;
       this.passwordMessage = "Please enter your password";
-      this.toast.error('Please enter your password', 'Password empty');
+      this.toast.error('Please enter your password');
 
       isSuccess = false;
 
@@ -187,10 +180,8 @@ export class SignUpComponent {
     else if (!this.isPasswordValid(this.password ?? "")) {
       // this.password = undefined
       this.passwordMessage = "Please vaild password";
-      this.toast.error('Please vaild password at least 1 uppercase ', 'Password invaild');
-
+      this.toast.error('Please vaild password at least 1 uppercase ');
       isSuccess = false;
-
     }
 
     // if (!this.isPasswordMatching(this.password ?? "", this.cPassword ?? "")) {
@@ -200,24 +191,23 @@ export class SignUpComponent {
     // }
 
     if (Number.isNaN(this.age) || this.age == 0) {
-
       this.age = 0;
       // console.log(this.age);
       isSuccess = false;
-      this.toast.error('Please enter vaild age', 'Age Empty');
-
-
+      this.toast.error('Please enter vaild age');
     }
 
     if (this.phone?.length == 0) {
-      // this.phone = undefined;
       isSuccess = false;
-      this.toast.error('Please enter vaild phone', 'Phone');
+      this.toast.error('Please enter vaild phone');
+    }
 
+    if (this.specialization == ''&& this.role=="doctor") {
+      isSuccess = false;
+      this.toast.error('Please enter your specialization');
     }
 
     return isSuccess;
-
 
   }
 
@@ -241,8 +231,7 @@ export class SignUpComponent {
 
 
 
-  sendPostRequest(body: SignUpRequestBody): Observable<SignUpResponseBody> {
-
+  addNewUser(body: SignUpRequestBody): Observable<SignUpResponseBody> {
 
     return this.httpClient.post<SignUpResponseBody>(ApiData.baseUrl + ApiData.signUpEndPoint,
       {
@@ -258,6 +247,23 @@ export class SignUpComponent {
     );
   }
 
+
+  addNewDoctor(body: SignUpRequestBody): Observable<SignUpResponseBody> {
+
+    return this.httpClient.post<SignUpResponseBody>(ApiData.baseUrl + ApiData.signUpEndPoint,
+      {
+        "name": body.name,
+        "age": body.age,
+        "specialization": this.specialization,
+        "email": body.email,
+        "password": body.password,
+        "confirmPassword": body.confirmPassword,
+        "gender": body.gender,
+        "phone": body.phone,
+        "role": this.role
+      },
+    );
+  }
 
 
 }
