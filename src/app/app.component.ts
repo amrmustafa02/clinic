@@ -28,7 +28,6 @@ export class AppComponent {
       } else {
 
         route.navigate([RoutesData.userHome], { replaceUrl: true });
-
       }
 
     } else {
