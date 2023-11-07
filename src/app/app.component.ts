@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserUtils } from './components/utils/user.utils';
 import { Router } from '@angular/router';
+import { RoutesData } from './routes';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +20,20 @@ export class AppComponent {
 
 
       if (UserUtils.user.role == "doctor") {
-        route.navigate(["/doctor/home"], { replaceUrl: true });
+
+        console.log("enter");
+
+        route.navigate([RoutesData.doctorHome],);
+
       } else {
-        route.navigate(["/patient/home"], { replaceUrl: true });
+
+        route.navigate([RoutesData.userHome], { replaceUrl: true });
+
       }
+
     } else {
       UserUtils.role = "";
-      route.navigate(["/role"], { replaceUrl: true });
+      route.navigate([RoutesData.role], { replaceUrl: true });
     }
   }
 }

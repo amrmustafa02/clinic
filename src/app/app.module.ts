@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgxMatDateAdapter, NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import {MatButtonModule} from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
@@ -12,6 +13,18 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeDoctorComponent } from './components/home/home-doctor/home-doctor.component';
 import { HomePatientComponent } from './components/home/home-patient/home-patient.component';
+import { HomeNavDoctorComponent } from './components/home-nav-doctor/home-nav-doctor.component';
+import { PatientsNavDoctorComponent } from './components/patients-nav-doctor/patients-nav-doctor.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core'
+import { MatIconModule } from '@angular/material/icon';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
+import { AppoinmentNavDoctorComponent } from './components/appoinment-nav-doctor/appoinment-nav-doctor.component';
+import {NgOptimizedImage} from "@angular/common";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,23 +32,41 @@ import { HomePatientComponent } from './components/home/home-patient/home-patien
     LoginComponent,
     ChooseRoleComponent,
     HomeDoctorComponent,
-    HomePatientComponent
+    HomePatientComponent,
+    HomeNavDoctorComponent,
+    PatientsNavDoctorComponent,
+    AppoinmentNavDoctorComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgxMatTimepickerModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatInputModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+
     ToastrModule.forRoot(
       {
         timeOut: 2000,
         progressBar: true
       }
-
     ),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgOptimizedImage
   ],
-  providers: [],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

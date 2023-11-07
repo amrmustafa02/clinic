@@ -6,16 +6,31 @@ import { ChooseRoleComponent } from './components/auth/choose-role/choose-role.c
 import { HomePatientComponent } from './components/home/home-patient/home-patient.component';
 import { AppComponent } from './app.component';
 import { HomeDoctorComponent } from './components/home/home-doctor/home-doctor.component';
+import { RoutesData } from './routes';
+import { HomeNavDoctorComponent } from './components/home-nav-doctor/home-nav-doctor.component';
+import { PatientsNavDoctorComponent } from './components/patients-nav-doctor/patients-nav-doctor.component';
+import {AppoinmentNavDoctorComponent} from "./components/appoinment-nav-doctor/appoinment-nav-doctor.component";
 
 const routes: Routes = [
-  { path: "sign-up", component: SignUpComponent },
-  { path: "login", component: LoginComponent },
-  { path: "patient/home", component: HomePatientComponent },
-  { path: "doctor/home", component: HomeDoctorComponent },
-  { path: "role", component: ChooseRoleComponent },
-  { path: "app-root", component: AppComponent },
+  { path: RoutesData.register, component: SignUpComponent },
+  { path: RoutesData.login, component: LoginComponent },
+  { path: RoutesData.userHome, component: HomePatientComponent },
+  {
+    path: RoutesData.doctorHome, component: HomeDoctorComponent,
+    children: [
 
-  { path: '', redirectTo: "/app-root", pathMatch: 'full' },
+      { path: RoutesData.doctorNavHome, component: HomeNavDoctorComponent, },
+      { path: RoutesData.doctorNavPatients, component: PatientsNavDoctorComponent, },
+      { path: RoutesData.appointmentNavPatients, component: AppoinmentNavDoctorComponent, },
+      { path: '', redirectTo: "home", pathMatch: "full" },
+    ],
+
+  },
+  // { path: RoutesData.doctorNavHome, component: HomeNavDoctorComponent, },
+  // { path: RoutesData.doctorNavPatients, component: PatientsNavDoctorComponent },
+  { path: RoutesData.role, component: ChooseRoleComponent },
+  { path: "app-root", component: AppComponent },
+  { path: '', redirectTo: "app-root", pathMatch: 'full' },
 ];
 
 @NgModule({

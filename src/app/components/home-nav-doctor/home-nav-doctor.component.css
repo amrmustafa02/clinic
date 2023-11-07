@@ -1,0 +1,37 @@
+#welcome-message {
+  text-align: center;
+  margin: 10px;
+  background-color: #008170;
+  border-radius: 25px;
+  height: 200px;
+}
+
+#add-slot {
+  /*background-color: green;*/
+  border-radius: 25px;
+  text-align: center;
+
+  margin: 10px;
+
+}
+
+#add-slot-button {
+  width: 15vw;
+  margin: 10px;
+  background-color: #00BFA6;
+  color: white;
+}
+
+#add-slot-button :hover {
+  width: 200px;
+  margin: 10px;
+  background-color: #00BFA6;
+  text-align: start;
+}
+
+#data-picker {
+}
+
+#time-piker {
+
+}

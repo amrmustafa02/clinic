@@ -1,0 +1,144 @@
+<!--<html>-->
+
+<!--<body>-->
+<!--<div class="row">-->
+<!--  &lt;!&ndash; toady slot &ndash;&gt;-->
+
+<!--  <div class="col" id="welcome-message">-->
+<!--    <div class="row">-->
+
+<!--      <div class="col-2 me-3" style="background-color: transparent; text-align: end">-->
+<!--        <img src="/assets/images/advice.png" style="width: 200px">-->
+
+<!--      </div>-->
+
+<!--      <div class="col justify-content-start" style="background-color: transparent">-->
+
+<!--        <div class="row justify-content-start" style="text-align: start;background-color: transparent">-->
+<!--          <label style="color: white;font-size: 40px">Welcome,<label-->
+<!--            style="font-size: 40px ;font-weight: bold">Dr. {{user!.name!}}</label></label>-->
+<!--        </div>-->
+
+<!--        <div class="row justify-content-start" style="text-align: start ;background-color: transparent">-->
+<!--          <label style="color: white;font-size: 30px;padding-left:20px">Have a nice day at work❤️❤️</label>-->
+<!--        </div>-->
+
+<!--      </div>-->
+
+<!--    </div>-->
+
+
+<!--  </div>-->
+<!--  &lt;!&ndash; toady slot &ndash;&gt;-->
+
+<!--  &lt;!&ndash; choos slot &ndash;&gt;-->
+
+<!--  <div class="col-2" id="add-slot">-->
+
+<!--    &lt;!&ndash;   data time&ndash;&gt;-->
+<!--    <div class="row justify-content-center mt-3">-->
+<!--      <mat-form-field style="border-radius: 50px;">-->
+<!--        <input matInput [matDatepicker]="picker2" placeholder="Choose a date" #inputData>-->
+<!--        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>-->
+<!--        <mat-datepicker #picker2></mat-datepicker>-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;   data time&ndash;&gt;-->
+
+<!--    &lt;!&ndash;   time time&ndash;&gt;-->
+<!--    <div class="row justify-content-center mt-3">-->
+<!--      <div style="text-align: center;">-->
+<!--        <input type="time" class="form-control" #time/>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    &lt;!&ndash;   time time&ndash;&gt;-->
+
+<!--    &lt;!&ndash;    add slot&ndash;&gt;-->
+<!--    <button class="btn mt-3" id="add-slot-button" (click)="clickOnSlot(inputData.value,time.value)" >-->
+<!--      Add Slot-->
+<!--    </button>-->
+<!--    &lt;!&ndash;    add slot&ndash;&gt;-->
+
+<!--  </div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+<html>
+
+<body>
+<div class="container">
+  <!-- toady slot -->
+
+  <div class="col" id="welcome-message">
+    <div class="row">
+
+      <div class="col-2 me-3" style="background-color: transparent; text-align: end">
+        <img src="/assets/images/advice.png" style="width: 200px">
+
+      </div>
+
+      <div class="col justify-content-start" style="background-color: transparent">
+
+        <div class="row justify-content-start" style="text-align: start;background-color: transparent">
+          <label style="color: white;font-size: 40px">Welcome,<label
+            style="font-size: 40px ;font-weight: bold">Dr. {{user!.name!}}</label></label>
+        </div>
+
+        <div class="row justify-content-start" style="text-align: start ;background-color: transparent">
+          <label style="color: white;font-size: 30px;padding-left:20px">Have a nice day at work</label>
+        </div>
+
+      </div>
+      <div class="col-4 me-3" style="background-color: transparent; text-align: center">
+        <img src="/assets/images/care.png" style="width: 100px">
+         <h3 style="color: white">Giving is a never-fading treasure</h3>
+<!--         <h3 style="color: white">العطاء كنز لا يفني</h3>-->
+      </div>
+
+    </div>
+
+
+  </div>
+  <!-- toady slot -->
+
+  <!-- choose slot -->
+  <div class="row" style="background-color: transparent;text-align: center" id="add-slot">
+
+    <!--   data time-->
+    <div class="row justify-content-center mt-1">
+      <mat-form-field style="border-radius: 50px; width: 30vw">
+        <input matInput [matDatepicker]="picker2" placeholder="Choose a date" #inputData>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <!--   data time-->
+
+    <!--   time time-->
+    <div class="row justify-content-center mt-1">
+      <div style="text-align: center; width: 30vw">
+        <input type="time" class="form-control" #time/>
+      </div>
+    </div>
+    <!--   time time-->
+
+    <!--    add slot-->
+    <div class="row justify-content-center">
+      <button class="btn mt-2" id="add-slot-button" (click)="clickOnSlot(inputData.value,time.value)">
+        Add Slot
+      </button>
+    </div>
+
+    <!--    add slot-->
+
+  </div>
+  <!-- choose slot -->
+
+</div>
+
+</body>
+
+</html>

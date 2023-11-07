@@ -7,7 +7,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ApiData } from 'src/app/api.data';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { UserModel } from 'src/app/models/home/user.model';
+import { UserModel } from 'src/app/models/home-doctor/user.model';
+import { RoutesData } from 'src/app/routes';
 
 @Component({
   selector: 'app-sign-up',
@@ -100,17 +101,17 @@ Please enter password should
 
         console.log(UserUtils.user);
 
-         
+
         if (this.remeberMe == true) {
           UserUtils.saveUserData(data.result as UserModel, data.token!);
         }
 
         if (UserUtils.role == "doctor") {
-          this.route.navigate(["/doctor/home"], { replaceUrl: true });
+          this.route.navigate([RoutesData.doctorHome], { replaceUrl: true });
         } else {
-          this.route.navigate(["/patient/home"], { replaceUrl: true });
+          this.route.navigate([RoutesData.userHome], { replaceUrl: true });
         }
-        
+
 
 
       }, (err: HttpErrorResponse) => {

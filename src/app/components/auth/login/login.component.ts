@@ -6,7 +6,8 @@ import { ApiData } from 'src/app/api.data';
 import { SignInResponseBody } from 'src/app/models/auth/sign.respoonse.body';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { UserModel } from 'src/app/models/home/user.model';
+import { UserModel } from 'src/app/models/home-doctor/user.model';
+import { RoutesData } from 'src/app/routes';
 
 @Component({
   selector: 'app-login',
@@ -50,9 +51,9 @@ export class LoginComponent {
           }
 
           if (UserUtils.role == "doctor") {
-            this.route.navigate(["/doctor/home"], { replaceUrl: true });
+            this.route.navigate([RoutesData.doctorHome], { replaceUrl: true });
           } else {
-            this.route.navigate(["/patient/home"], { replaceUrl: true });
+            this.route.navigate([RoutesData.userHome], { replaceUrl: true });
           }
         }
       );

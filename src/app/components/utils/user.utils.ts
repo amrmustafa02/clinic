@@ -1,11 +1,11 @@
 import { SignUpRequestBody } from "src/app/models/auth/sign.up.request.body";
 import { SignUpResponseBody } from "src/app/models/auth/sign.up.response.body";
-import { UserModel } from "src/app/models/home/user.model";
+import { UserModel } from "src/app/models/home-doctor/user.model";
 export class UserUtils {
     static role = "";
     static token = "";
     static user: UserModel = new UserModel();
-    constructor() {    
+    constructor() {
     }
 
     static saveUserData(user: UserModel, token: string) {

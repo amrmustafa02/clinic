@@ -26,6 +26,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "src/app/components/home/home-doctor/home-doctor.component.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
