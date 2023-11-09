@@ -1,167 +1,179 @@
 <body>
-    <section>
-        <div class="container h-100">
-            <div class="">
-                <div class="col-lg-2 col-xl-11">
-                    <div class="" style="background-color: transparent;">
-                        <div class="row justify-content-center" style="background-color: transparent;">
-                            <!-- <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+<section>
+    <div class="container h-100">
 
-                                <h1>
-                                    hhgh
+        <div class="col-lg-2 col-xl-11">
+            <div class="" style="background-color: transparent;">
+                <div class="row justify-content-center" style="background-color: transparent;">
 
-                                </h1>
-                            </div> -->
 
-                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                                <p class="text-center h1 fw-bold mb-3 m-1 mx-md-2 mt-2" style="color: white;">Register
-                                </p>
+                        <p class="text-center h1 fw-bold mb-3 m-1 mx-md-2 mt-1" style="color: white;">Register
+                        </p>
 
-                                <form class="img-thumbnail pe-3 mt-3 pt-4 h-90" id="form">
-
-                                    <!-- name -->
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="ms-3"></i>
-                                        <div class="form-outline flex-fill">
-                                            <label class="form-label">Name</label>
-                                            <input type="text" class="form-control" id="nameInput" />
-                                            <div *ngIf="this.name == null">
-                                                <label class="form-label" style="color: red;">Please enter your
-                                                    name</label>
-                                            </div>
-                                        </div>
+                        <form class="img-thumbnail pe-3 mt-3 pt-4 h-90" id="form">
+                            <!-- name -->
+                            <div class="d-flex flex-row align-items-center mb-3">
+                                <i class="ms-3"></i>
+                                <div class="form-outline flex-fill">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="nameInput"/>
+                                    <div *ngIf="this.name == null">
+                                        <label class="form-label" style="color: red;">Please enter your
+                                            name</label>
                                     </div>
-                                    <!-- <h1>{{name}}</h1> -->
-                                    <!-- name -->
-
-                                    <!-- email -->
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <label class="form-label" for="form3Example3c">Email</label>
-                                            <input type="email" id="emailInput" class="form-control" />
-                                            <div *ngIf="this.email == null">
-                                                <label class="form-label" style="color: red;">Please enter your
-                                                    email</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- email -->
-
-                                    <!-- password -->
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                                        <div class="form-outline flex-fill mb-0">
-                                            <label class="form-label">Password</label>
-                                            <input type="password" id="passwordInput" class="form-control" />
-                                            <div *ngIf="this.password == null">
-                                                <label class="form-label"
-                                                    style="color: red;">{{passwordMessage}}</label><br>
-                                                <!-- <label class="form-label" style="color: red;" >must contain</label> -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- password -->
-
-
-
-
-                                    <!-- age and phone -->
-                                    <div class="d-flex flex-row align-items-center mb-4">
-                                        <i class="fas fa-user fa-lg me-3 fa-fw"></i>
-
-                                        <diV class="row">
-
-                                            <div class="col">
-                                                <label class="form-label">Age</label>
-                                                <input type="text" id="ageInput" class="form-control" />
-
-                                            </div>
-
-                                            <div class="col">
-                                                <label class="form-label">Phone</label>
-                                                <input type="text" id="phoneInput" class="form-control" />
-                                                <div *ngIf="this.phone == null">
-                                                    <label class="form-label" style="color: red;">Please enter your
-                                                        phone</label>
-                                                </div>
-                                            </div>
-
-                                        </diV>
-                                        <!-- age and phone -->
-
-                                    </div>
-
-
-                                    <!-- gander -->
-                                    <div class="row ms-1">
-                                        <div class="col" style="text-align: start;" id="genderInput">
-                                            <select class="form-select-sm  mb-4 " #gender
-                                                (change)="onGenderChange(gender.value)">
-                                                <!-- <option selected disabled>Gander</option> -->
-                                                <option selected value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-
-                                        </div>
-
-
-                                        <div class="col" *ngIf="role=='doctor'" style="text-align: start;">
-                                            <select class="form-select-sm   mb-4 " id="filedInput" #specialization
-                                                (change)="onSpecializationChange(specialization.value)">
-                                                <option selected disabled>Specialization</option>
-                                                <option value="General Practitioner (GP)">General Practitioner (GP)
-                                                </option>
-                                                <option value="Cardiologist">Cardiologist</option>
-                                                <option value="Pediatrician">Pediatrician</option>
-                                                <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
-                                                <option value="Dermatologist">Dermatologist</option>
-                                                <option value="Gynecologist">Gynecologist</option>
-                                                <option value="Anesthesiologist">Anesthesiologist</option>
-                                                <option value="Radiologist">Radiologist</option>
-                                                <option value="Neurologist9">Neurologist</option>
-                                                <option value="Psychiatrist">Psychiatrist</option>
-
-                                            </select>
-
-                                        </div>
-
-
-                                    </div>
-                                    <!-- role gander  -->
-
-
-                                    <div class="col-sm">
-                                        <!-- [ngStyle]="{'background-color': colorOfCheckBox}" -->
-
-                                        <input class="form-check-input ms-3" type="checkbox" id="remember-me" />
-
-                                        <label class="form-check-label ms-2 mb-3">
-                                            Remember me
-                                        </label>
-
-                                    </div>
-
-
-                                    <div class="d-flex justify-content-center mx-4 mb-3">
-                                        <button type="button" class="btn btn-primary btn-lg" id="my-register-btn"
-                                            (click)="clickOnRegister()">Register</button>
-                                    </div>
-
-
-                                </form>
-                                <div class="col-sm justify-content-center" style=" text-align: center;" id="btn-login">
-                                    <label>Already Have Account? <button class="btn info" id="go-to-login"
-                                            (click)="clickOnLogin()">Login</button></label>
-
                                 </div>
                             </div>
+                            <!-- <h1>{{name}}</h1> -->
+                            <!-- name -->
+
+                            <!-- email -->
+                            <div class="d-flex flex-row align-items-center mb-3">
+                                <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" id="emailInput" class="form-control"/>
+                                    <div *ngIf="this.email == null">
+                                        <label class="form-label" style="color: red;">Please enter your
+                                            email</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- email -->
+
+                            <!-- password -->
+                            <div class="d-flex flex-row align-items-center mb-3">
+                                <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                <div class="form-outline flex-fill mb-0">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" id="passwordInput" class="form-control"/>
+                                    <div *ngIf="this.password == null">
+                                        <label class="form-label"
+                                               style="color: red;">{{passwordMessage}}</label><br>
+                                        <!-- <label class="form-label" style="color: red;" >must contain</label> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- password -->
+
+
+                            <!-- age and phone -->
+                            <div class="d-flex flex-row align-items-center mb-4">
+                                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+
+                                <diV class="row">
+
+                                    <div class="col">
+                                        <label class="form-label">Age</label>
+                                        <input type="text" id="ageInput" class="form-control"/>
+
+                                    </div>
+
+                                    <div class="col">
+                                        <label class="form-label">Phone</label>
+                                        <input type="text" id="phoneInput" class="form-control"/>
+                                        <div *ngIf="this.phone == null">
+                                            <label class="form-label" style="color: red;">Please enter your
+                                                phone</label>
+                                        </div>
+                                    </div>
+
+                                </diV>
+                                <!-- age and phone -->
+
+                            </div>
+
+
+                            <!-- gander -->
+                            <div class="row ms-1 ">
+                                <div class="col" style="text-align: start;" id="genderInput">
+                                    <select class="form-select-sm  mb-4 " #gender
+                                            (change)="onGenderChange(gender.value)">
+                                        <!-- <option selected disabled>Gander</option> -->
+                                        <option selected value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="col" *ngIf="role=='doctor'" style="text-align: start;">
+                                    <select class="form-select-sm " id="filedInput" #specialization
+                                            (change)="onSpecializationChange(specialization.value)">
+                                        <option selected disabled>Specialization</option>
+                                        <option value="General Practitioner (GP)">General Practitioner (GP)
+                                        </option>
+                                        <option value="Cardiologist">Cardiologist</option>
+                                        <option value="Pediatrician">Pediatrician</option>
+                                        <option value="Orthopedic Surgeon">Orthopedic Surgeon</option>
+                                        <option value="Dermatologist">Dermatologist</option>
+                                        <option value="Gynecologist">Gynecologist</option>
+                                        <option value="Anesthesiologist">Anesthesiologist</option>
+                                        <option value="Radiologist">Radiologist</option>
+                                        <option value="Neurologist9">Neurologist</option>
+                                        <option value="Psychiatrist">Psychiatrist</option>
+
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+                            <!-- role gander  -->
+
+
+                            <!--                            <div class="col align-items-sm-start justify-content-center"-->
+                            <!--                                 style="background-color: transparent">-->
+                            <!--                                &lt;!&ndash; [ngStyle]="{'background-color': colorOfCheckBox}" &ndash;&gt;-->
+
+                            <!--                                <input class="form-check-input m-0  p-0 " type="checkbox" id="remember-me"/>-->
+                            <!--                                <label class="form-check-label  m-0 p-0" style="background-color: transparent"-->
+                            <!--                                       for="remember-me">-->
+                            <!--                                    Remember me-->
+                            <!--                                </label>-->
+
+                            <!--                            </div>-->
+
+                            <!--                            <input type="checkbox" value="lsRememberMe" id="remember-Me" class="ms-3"-->
+                            <!--                                   style="background-color: #87dbd0">-->
+                            <!--                            <label>Remember me</label>-->
+
+                            <div class="checkbox-wrapper-31 ms-3">
+                                <input type="checkbox" id ="remember-me"/>
+                                <svg viewBox="0 0 35.6 35.6">
+                                    <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                    <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                    <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                                </svg>
+                            </div>
+                            <label>Remember me</label>
+
+
+
+
+                            <div class="d-flex justify-content-center mx-4 mb-3">
+                                <button type="button" class="btn btn-primary btn-lg" id="my-register-btn"
+                                        (click)="clickOnRegister()">Register
+                                </button>
+                            </div>
+
+
+                        </form>
+                        <div class="col-sm justify-content-center" style=" text-align: center;" id="btn-login">
+                            <label>Already Have Account?
+                                <button class="btn info" id="go-to-login"
+                                        (click)="clickOnLogin()">Login
+                                </button>
+                            </label>
 
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
-    </section>
+
+    </div>
+</section>
 </body>

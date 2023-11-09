@@ -55,7 +55,7 @@
         <input type="time" class="form-control" #time/>
       </div>
     </div>
-    <!--   time time-->
+<!--       time time-->
 
     <!--    add slot-->
     <div class="row justify-content-center">
@@ -64,25 +64,12 @@
       </button>
     </div>
 
-    <!--    add slot-->
+<!--        add slot-->
 
   </div>
   <!-- choose slot -->
 
-  <!-- show today slots -->
-  <div class="row justify-content-center" style="background-color: red; height: 250px;">
-    <cdk-virtual-scroll-viewport itemSize="1" class="example-viewport" style="height: 250px;">
-      <li *ngFor="let slot of slots"> 
-        {{ slot.id }} 
-       </li>
-    </cdk-virtual-scroll-viewport>
 
-   </div>
-   <div class="row justify-content-center">
-    <button class="btn mt-2" id="add-slot-button" (click)="clickOnSlot(inputData.value,time.value)">
-      Refresh
-    </button>
-  </div>
 
 </div>
 

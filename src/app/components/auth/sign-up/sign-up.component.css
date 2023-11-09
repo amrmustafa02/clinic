@@ -3,30 +3,37 @@
     background-color: #00BFA6;
     border-color: #00BFA6;
 }
-#go-to-login{
-    color:white;
+
+#go-to-login {
+    color: white;
 }
-#go-to-login:hover{
-    color:#00BFA6;
+
+#go-to-login:hover {
+    color: #00BFA6;
 }
+
 #remember-me {
     /* border-color: #00BFA6; */
-    background: rgba(255, 255, 255, 0.09);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color:white
+    /*background: rgba(255, 255, 255, 0.09);*/
+    /*border-radius: 16px;*/
+    /*box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);*/
+    /*backdrop-filter: blur(4px);*/
+    /*-webkit-backdrop-filter: blur(4px);*/
+    /*border: 1px solid rgba(255, 255, 255, 0.3);*/
+    /*color:white;*/
+
 }
-#remember-me:checked{
-    background:#00BFA6;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color:white
+
+#remember-me:checked {
+    /*background:#00BFA6;*/
+
+    /*box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);*/
+    /*backdrop-filter: blur(3.5px);*/
+    /*-webkit-backdrop-filter: blur(3.5px);*/
+    /*border: 1px solid rgba(255, 255, 255, 0.3);*/
+    /*color:white*/
 }
+
 body {
 
     background-image: url("src/assets/images/bg_user.jpeg");
@@ -36,13 +43,15 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-  height: 100vh;
+    height: 100vh;
 
 }
-label{
+
+label {
     color: white;
 
 }
+
 #form {
     /* max-height: 50%; */
 
@@ -54,7 +63,7 @@ label{
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-section{
+section {
     max-height: 100%;
 }
 
@@ -70,32 +79,19 @@ input {
 
     color: white
 } */
-#nameInput{
+#nameInput {
     background: rgba(255, 255, 255, 0.09);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.5px);
     -webkit-backdrop-filter: blur(3.5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    color: black
+    color: white;
 
 }
 
 
-#emailInput{
-    background: rgba(255, 255, 255, 0.09);
-    border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-
-    color: black
-
-}
-
-
-#passwordInput{
+#emailInput {
     background: rgba(255, 255, 255, 0.09);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -108,8 +104,7 @@ input {
 }
 
 
-
-#ageInput{
+#passwordInput {
     background: rgba(255, 255, 255, 0.09);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -121,7 +116,8 @@ input {
 
 }
 
-#phoneInput{
+
+#ageInput {
     background: rgba(255, 255, 255, 0.09);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -133,7 +129,19 @@ input {
 
 }
 
-select{
+#phoneInput {
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3.5px);
+    -webkit-backdrop-filter: blur(3.5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    color: black
+
+}
+
+select {
     background: rgba(255, 255, 255, 0.09);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -145,3 +153,65 @@ select{
 /* label {
     color: #000;
 } */
+.checkbox-wrapper-31:hover .check {
+    stroke-dashoffset: 0;
+
+
+}
+
+.checkbox-wrapper-31 {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+
+}
+.checkbox-wrapper-31 .background {
+    fill: #ccc;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+}
+.checkbox-wrapper-31 .stroke {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+}
+.checkbox-wrapper-31 .check {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    stroke-dashoffset: 22;
+    stroke-dasharray: 22;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+}
+.checkbox-wrapper-31 input[type=checkbox] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    opacity: 0;
+    -appearance: none;
+    -webkit-appearance: none;
+}
+.checkbox-wrapper-31 input[type=checkbox]:hover {
+    cursor: pointer;
+}
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .background {
+    fill: #00BFA6;
+}
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .stroke {
+    stroke-dashoffset: 0;
+}
+.checkbox-wrapper-31 input[type=checkbox]:checked + svg .check {
+    stroke-dashoffset: 0;
+}
