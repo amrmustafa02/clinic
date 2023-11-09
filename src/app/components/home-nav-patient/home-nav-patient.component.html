@@ -1,0 +1,59 @@
+<div class="row justify-content-center" style="width: 85vw;background-color: transparent;text-align: center">
+    <div class="input-group mb-3 mt-3" style="width: 50vw;text-align: center">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Dr/</span>
+        </div>
+        <input #searchName type="text" class="form-control" placeholder="Docotor Name" aria-label="Username"
+               aria-describedby="basic-addon1">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="searchByName(searchName.value)" >Search</button>
+        </div>
+    </div>
+
+</div>
+
+<cdk-virtual-scroll-viewport [itemSize]="doctors.length" class="example-viewport" style="    scrollbar-width: none;">
+
+    <div class="row" style="margin: 5px;padding-top:5px;padding-bottom: 5px ;background-color: #232D3F ;border-radius: 8px">
+        <div class="col-2" style="color: white">
+            Name
+        </div>
+        <div class="col-4" style="color: white">
+            Email
+        </div>
+        <div class="col-1" style="color: white">
+            Age
+        </div>
+        <div class="col-2" style="color: white">
+            Specialization
+        </div>
+        <div class="col-2" style="color: white">
+            Phone
+        </div>
+    </div>
+    <div *cdkVirtualFor="let doctor of doctors" class="example-item">
+
+        <div class="row" style="margin: 5px">
+            <div class="col-2">
+                {{doctor.name}}
+            </div>
+            <div class="col-4">
+                {{doctor.email}}
+
+            </div>
+            <div class="col-1">
+                {{doctor.age}}
+            </div>
+            <div class="col-2">
+                {{doctor.specialization}}
+            </div>
+            <div class="col-2" style="background-color: transparent">
+                {{doctor.phone}}
+            </div>
+        </div>
+        <hr style="margin-left:  5px; margin-right: 5px">
+
+    </div>
+
+
+</cdk-virtual-scroll-viewport>

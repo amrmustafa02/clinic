@@ -1,0 +1,21 @@
+.example-viewport {
+    margin-top: 10px;
+    /*padding: 10px;*/
+    height: 85vh;
+    width: 80vw;
+    /*padding: 0;*/
+    /*margin: 0;*/
+    /*border: 1px solid black;*/
+}
+
+.example-item {
+    height: 50px;
+    /*padding: 0;*/
+    /*margin: 0;*/
+}
+
+.example-viewport::-webkit-scrollbar{
+    display: none;
+}
+
+

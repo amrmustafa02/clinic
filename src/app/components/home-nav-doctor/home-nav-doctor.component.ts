@@ -40,10 +40,12 @@ export class HomeNavDoctorComponent {
     const datePipe: DatePipe = new DatePipe('en-US');
     let formattedDate = datePipe.transform(Date.parse(date), 'MMMM, dd, YYYY ');
 
-    if (formattedDate != null){
+    if (formattedDate != null) {
+      formattedDate += time + ":00";
+      console.log(formattedDate);
       this.toast.info("Please wait.....");
       this.addSlotRequest(formattedDate).subscribe(
-        (data)=>{
+        (data) => {
           console.log(data);
           this.toast.success("Add Successfully")
         }
@@ -51,10 +53,9 @@ export class HomeNavDoctorComponent {
     }
 
 
-
   }
 
-  addSlotRequest(date: string):Observable<AddSlotResponseBody> {
+  addSlotRequest(date: string): Observable<AddSlotResponseBody> {
     const headerDict = {
       "authenticated": "key_" + UserUtils.token,
     }

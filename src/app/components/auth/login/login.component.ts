@@ -46,7 +46,7 @@ export class LoginComponent {
 
           console.log(UserUtils.user);
 
-          if (this.remeberMe == true) {
+          if (this.remeberMe) {
             UserUtils.saveUserData(data.user as UserModel, data.token);
           }
 

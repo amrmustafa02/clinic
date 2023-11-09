@@ -5,20 +5,24 @@
     border-radius: 15px;
 
 }
-label{
-    color:white;
-  margin: 10px;
+
+label {
+    color: white;
+    margin: 10px;
 }
-a:hover{
+
+a:hover {
     width: 100%;
 
-color:white
+    color: white
 }
-.nav-item:active{
-    color:white;
+
+.nav-item:active {
+    color: white;
     width: 100%;
 }
-.nav-item{
-    color:white;
+
+.nav-item {
+    color: white;
     width: 100%;
 }

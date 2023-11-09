@@ -1,10 +1,10 @@
-import { SignUpRequestBody } from "src/app/models/auth/sign.up.request.body";
-import { SignUpResponseBody } from "src/app/models/auth/sign.up.response.body";
-import { UserModel } from "src/app/models/home-doctor/user.model";
+import {UserModel} from "src/app/models/home-doctor/user.model";
+
 export class UserUtils {
     static role = "";
     static token = "";
     static user: UserModel = new UserModel();
+
     constructor() {
     }
 
@@ -26,7 +26,7 @@ export class UserUtils {
         this.user.name = localStorage.getItem('name') ?? "";
         this.user.email = localStorage.getItem('email') ?? "";
         this.user.phone = localStorage.getItem('phone') ?? "";
-        this.user.age = + localStorage.getItem('age')!;
+        this.user.age = +localStorage.getItem('age')!;
         this.user.gender = localStorage.getItem('gender') ?? "";
         this.user.role = localStorage.getItem('role') ?? "";
         this.user.specialization = localStorage.getItem('specialization') ?? "";
@@ -38,7 +38,7 @@ export class UserUtils {
     static checkIfRemeberMe(): boolean {
         // localStorage.setItem('remeber', "false");
 
-        var s = localStorage.getItem("remeber");
+        const s = localStorage.getItem("remeber");
 
         if (s == null) {
             return false;
@@ -50,5 +50,6 @@ export class UserUtils {
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailPattern.test(email);
     }
+
 
 }

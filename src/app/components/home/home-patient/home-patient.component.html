@@ -1,1 +1,48 @@
-<p>{{user!.name!}}</p>
+<body>
+<section class="row">
+  <div class="col-3"
+       style="width: 15% ; text-align: start; background-color: #232D3F; height: 99vh; ">
+    <h1 class="" style="text-align: center">
+      <span class="fs-2" style="color: white;">Dashboard</span>
+    </h1>
+    <ul class="navbar-light m-2 p-0" style="color:white;text-align: start">
+      <div class="container" style="text-align: center ;width: 100%">
+        <div class="row">
+          <label class="mb-3 mt-1"
+                 style="text-align:center; width: 100%;color: white; ">
+
+            <img [src]="src" class="" id="doctor-avatar"
+                 style=" border-radius: 15px; width: 70%; text-align: center;" alt="">
+
+          </label>
+        </div>
+
+        <div class="row">
+          <label class="mb-3 mt-1"
+                 style="text-align:center; width: 100%;color: white; ">{{patient!.email!}}</label>
+        </div>
+
+      </div>
+      <hr style="color: white">
+
+      <div class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/user/home">
+          <label>home</label>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a class="nav-link" routerLinkActive="active" routerLink="/user/majors">
+          <label>Majors</label>
+        </a>
+      </div>
+
+    </ul>
+
+  </div>
+  <div class="col-10">
+    <router-outlet></router-outlet>
+  </div>
+</section>
+
+
+</body>

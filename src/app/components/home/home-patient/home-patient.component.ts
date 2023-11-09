@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
-import { User } from 'src/app/models/auth/sign.up.response.body';
-import { UserUtils } from '../../utils/user.utils';
+import {Component} from '@angular/core';
+import {User} from 'src/app/models/auth/sign.up.response.body';
+import {UserUtils} from '../../utils/user.utils';
+import {UserModel} from "../../../models/home-doctor/user.model";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {ApiData} from "../../../api.data";
 
 @Component({
   selector: 'app-home-patient',
@@ -8,10 +11,22 @@ import { UserUtils } from '../../utils/user.utils';
   styleUrls: ['./home-patient.component.css']
 })
 export class HomePatientComponent {
-  user?: User;
-  token?:string;
-  constructor() {
-    this.user = UserUtils.user;
-    this.token = UserUtils.token;
+
+  patient?: UserModel;
+
+  src = "/assets/images/woman.png";
+
+  constructor(private http: HttpClient) {
+
+    console.log(UserUtils.user);
+    this.patient = UserUtils.user;
+
+    if (this.patient.gender == "male") {
+      this.src = "/assets/images/boy.png";
+    }
+    // this.getDoctorsWithSlots();
   }
+
+
+
 }

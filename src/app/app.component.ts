@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { UserUtils } from './components/utils/user.utils';
-import { Router } from '@angular/router';
-import { RoutesData } from './routes';
+import {Component} from '@angular/core';
+import {UserUtils} from './components/utils/user.utils';
+import {Router} from '@angular/router';
+import {RoutesData} from './routes';
 
 @Component({
   selector: 'app-root',
@@ -26,13 +26,14 @@ export class AppComponent {
         route.navigate([RoutesData.doctorHome],);
 
       } else {
+        console.log("enter2");
 
-        route.navigate([RoutesData.userHome], { replaceUrl: true });
+        route.navigate([RoutesData.userHome]);
       }
 
     } else {
       UserUtils.role = "";
-      route.navigate([RoutesData.role], { replaceUrl: true });
+      route.navigate([RoutesData.role], {replaceUrl: true});
     }
   }
 }
