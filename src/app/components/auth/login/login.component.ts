@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserUtils } from '../../utils/user.utils';
-import { ToastrService } from 'ngx-toastr';
-import { ApiData } from 'src/app/api.data';
-import { SignInResponseBody } from 'src/app/models/auth/sign.respoonse.body';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/internal/Observable';
-import { UserModel } from 'src/app/models/home-doctor/user.model';
-import { RoutesData } from 'src/app/routes';
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {UserUtils} from '../../utils/user.utils';
+import {ToastrService} from 'ngx-toastr';
+import {ApiData} from 'src/app/api.data';
+import {SignInResponseBody} from 'src/app/models/auth/sign.respoonse.body';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {Observable} from 'rxjs/internal/Observable';
+import {UserModel} from 'src/app/models/home-doctor/user.model';
+import {RoutesData} from 'src/app/routes';
 
 @Component({
   selector: 'app-login',
@@ -30,12 +30,13 @@ export class LoginComponent {
   }
 
   clickOnDonHaveAccount() {
-    this.route.navigate(['/sign-up'], { replaceUrl: true });
+    this.route.navigate(['/sign-up'], {replaceUrl: true});
   }
 
   clickOnLogin() {
     this.extractFields();
     if (this.handleFields()) {
+      this.toast.info("please wait");
 
       this.sendLoginRequest(this.email!, this.password!).subscribe(
         (data: SignInResponseBody) => {
@@ -51,10 +52,14 @@ export class LoginComponent {
           }
 
           if (UserUtils.role == "doctor") {
-            this.route.navigate([RoutesData.doctorHome], { replaceUrl: true });
+            this.route.navigate([RoutesData.doctorHome], {replaceUrl: true});
           } else {
-            this.route.navigate([RoutesData.userHome], { replaceUrl: true });
+            this.route.navigate([RoutesData.userHome], {replaceUrl: true});
           }
+        },
+        (err: HttpErrorResponse) => {
+          this.toast.error("Email or password is not correct");
+
         }
       );
     }
@@ -86,7 +91,7 @@ export class LoginComponent {
     if (this.email!.length == 0 && !UserUtils.isEmailFormat(this.email ?? "")) {
       // this.email = undefined
       isSuccess = false;
-      this.toast.error('Please enter your vaild email');
+      this.toast.error('Please enter your valid email');
     }
 
     if (this.password?.length == 0) {

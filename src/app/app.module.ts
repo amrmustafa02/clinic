@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 import {
-    NgxMatDateAdapter,
-    NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule
+  NgxMatDateAdapter,
+  NgxMatDatetimePickerModule,
+  NgxMatTimepickerModule
 } from '@angular-material-components/datetime-picker';
 import {MatButtonModule} from '@angular/material/button';
 import {AppRoutingModule} from './app-routing.module';
@@ -32,56 +32,58 @@ import {HomeNavPatientComponent} from './components/home-nav-patient/home-nav-pa
 import {MajorsNavPatientComponent} from './components/majors-nav-patient/majors-nav-patient.component';
 import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatTableModule} from '@angular/material/table';
-import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
+import {MdbCheckboxModule} from 'mdb-angular-ui-kit/checkbox';
+import { MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        SignUpComponent,
-        LoginComponent,
-        ChooseRoleComponent,
-        HomeDoctorComponent,
-        HomePatientComponent,
-        HomeNavDoctorComponent,
-        PatientsNavDoctorComponent,
-        AppoinmentNavDoctorComponent,
-        HomeNavPatientComponent,
-        MajorsNavPatientComponent,
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        NgxMatTimepickerModule,
-        MatSlideToggleModule,
-        ReactiveFormsModule,
-        MatNativeDateModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDatepickerModule,
-        MatInputModule,
-        NgxMatDatetimePickerModule,
-        NgxMatNativeDateModule,
-        ScrollingModule,
-        MatTableModule,
-        MdbCheckboxModule,
+  declarations: [
+    AppComponent,
+    SignUpComponent,
+    LoginComponent,
+    ChooseRoleComponent,
+    HomeDoctorComponent,
+    HomePatientComponent,
+    HomeNavDoctorComponent,
+    PatientsNavDoctorComponent,
+    AppoinmentNavDoctorComponent,
+    HomeNavPatientComponent,
+    MajorsNavPatientComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    MatDialogModule,
+    HttpClientModule,
+    NgxMatTimepickerModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule,
+    MatNativeDateModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatInputModule,
+    NgxMatDatetimePickerModule,
+    NgxMatNativeDateModule,
+    ScrollingModule,
+    MatTableModule,
+    MdbCheckboxModule,
 
-        ToastrModule.forRoot(
-            {
-                timeOut: 2000,
-                progressBar: true
-            }
-        ),
-        BrowserAnimationsModule,
-        NgOptimizedImage,
-    ],
-    providers: [
-        MatDatepickerModule,
-        MatNativeDateModule
+    ToastrModule.forRoot(
+      {
+        timeOut: 2000,
+        progressBar: true
+      }
+    ),
+    BrowserAnimationsModule,
+    NgOptimizedImage,
+  ],
+  providers: [
+    MatDatepickerModule,
+    MatNativeDateModule
 
-    ],
-    bootstrap: [AppComponent]
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

@@ -19,3 +19,15 @@
 }
 
 
+#one-doctor{
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+}
+
+#one-doctor:hover{
+/*background-color:black;*/
+  color: #008170;
+  /*opacity: 0.5;*/
+  cursor: pointer;
+}

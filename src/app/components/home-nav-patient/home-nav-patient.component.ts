@@ -3,6 +3,7 @@ import {GetDoctorsResponseBody, User} from "../../models/patient/get_doctors_bod
 import {ApiData} from "../../api.data";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Doctor, SearchDoctorBody} from "../../models/patient/search_doctors_body";
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 
 export interface PeriodicElement {
     name: string;
@@ -35,7 +36,7 @@ export class HomeNavPatientComponent {
     displayedColumns: string[] = ['demo-position', 'demo-name', 'demo-weight', 'demo-symbol'];
     dataSource = this.doctors;
 
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient,public dialog: MatDialog) {
         this.getDoctorsWithSlots();
         // this.doctors?.length
     }
@@ -71,4 +72,26 @@ export class HomeNavPatientComponent {
             }
         );
     }
+
+
+  openDialog(index :number) {
+    console.log(index);
+    const dialogRef = this.dialog.open(DialogContentExampleDialog);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
+
+
+
+@Component({
+  selector: 'dialog-content-example-dialog',
+  templateUrl: 'doctor.slots.html',
+  standalone: true,
+  imports: [
+    MatDialogModule
+  ]
+})
+export class DialogContentExampleDialog {}
