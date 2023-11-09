@@ -1,10 +1,11 @@
-import { SignUpRequestBody } from "src/app/models/auth/sign.up.request.body";
-import { SignUpResponseBody } from "src/app/models/auth/sign.up.response.body";
+import { Slot, SlotsModel } from "src/app/models/home-doctor/slots.model";
 import { UserModel } from "src/app/models/home-doctor/user.model";
 export class UserUtils {
     static role = "";
     static token = "";
     static user: UserModel = new UserModel();
+    static docotrSlots? :SlotsModel[];
+
     constructor() {
     }
 
@@ -51,4 +52,7 @@ export class UserUtils {
         return emailPattern.test(email);
     }
 
+    todatAppon(){
+
+    }
 }

@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { AppoinmentNavDoctorComponent } from './components/appoinment-nav-doctor/appoinment-nav-doctor.component';
 import {NgOptimizedImage} from "@angular/common";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import {NgOptimizedImage} from "@angular/common";
     MatIconModule,
     MatDatepickerModule,
     MatInputModule,
+    ScrollingModule,
     NgxMatDatetimePickerModule,
     NgxMatNativeDateModule,
 

@@ -14,9 +14,19 @@ import {AppoinmentNavDoctorComponent} from "./components/appoinment-nav-doctor/a
 const routes: Routes = [
   { path: RoutesData.register, component: SignUpComponent },
   { path: RoutesData.login, component: LoginComponent },
-  { path: RoutesData.userHome, component: HomePatientComponent },
   {
     path: RoutesData.doctorHome, component: HomeDoctorComponent,
+    children: [
+
+      { path: RoutesData.doctorNavHome, component: HomeNavDoctorComponent, },
+      { path: RoutesData.doctorNavPatients, component: PatientsNavDoctorComponent, },
+      { path: RoutesData.appointmentNavPatients, component: AppoinmentNavDoctorComponent, },
+      { path: '', redirectTo: "home", pathMatch: "full" },
+    ],
+
+  },
+  {
+    path: RoutesData.userHome, component: HomePatientComponent,
     children: [
 
       { path: RoutesData.doctorNavHome, component: HomeNavDoctorComponent, },
