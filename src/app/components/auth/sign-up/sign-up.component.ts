@@ -139,7 +139,6 @@ Please enter password should
   }
 
 
-
   extractFields(): void {
     const nameInput = document.getElementById(
       'nameInput',

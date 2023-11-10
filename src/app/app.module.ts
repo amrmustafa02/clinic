@@ -34,6 +34,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
 import {MatTableModule} from '@angular/material/table';
 import {MdbCheckboxModule} from 'mdb-angular-ui-kit/checkbox';
 import { MatDialogModule} from '@angular/material/dialog';
+import { AppoinmentsNavPatientComponent } from './components/appoinments-nav-patient/appoinments-nav-patient.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { MatDialogModule} from '@angular/material/dialog';
     AppoinmentNavDoctorComponent,
     HomeNavPatientComponent,
     MajorsNavPatientComponent,
+    AppoinmentsNavPatientComponent,
   ],
   imports: [
     BrowserModule,

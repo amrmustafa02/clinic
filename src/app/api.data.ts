@@ -1,5 +1,6 @@
 export class ApiData {
 
+
   static baseUrl = "https://clinicreservation.onrender.com";
   static signUpEndPoint = "/auth/signUp";
   static loginEndPoint = "/auth/signin";
@@ -7,6 +8,6 @@ export class ApiData {
   static getDoctors = "/user/GetDoctorWithSlots";
   static search = "/user/searchByDoctorName";
   static appointment = "/appointment/";
-
+  static myAppointment = "/appointment";
 
 }

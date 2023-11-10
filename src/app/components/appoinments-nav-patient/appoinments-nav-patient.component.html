@@ -1,0 +1,84 @@
+<div class="row justify-content-center" style="width: 85vw;background-color: transparent;text-align: center">
+  <div class="input-group mb-3 mt-3" style="width: 50vw;text-align: center">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">Dr/</span>
+    </div>
+    <input #searchName type="text" class="form-control" placeholder="Enter doctor name" aria-label="Username"
+           aria-describedby="basic-addon1">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" id="search-button" type="button">Search</button>
+    </div>
+  </div>
+
+</div>
+<cdk-virtual-scroll-viewport [itemSize]="appointments!.length!" class="example-viewport" style="scrollbar-width: none;">
+
+  <div class="row"
+       style="margin: 5px;padding-top:5px;padding-bottom: 5px ;background-color: #232D3F ;border-radius: 8px">
+    <div class="col-2" style="color: white">
+      Doctor Name
+    </div>
+    <div class="col-1" style="color: white">
+      Time
+    </div>
+    <div class="col-1" style="color: white">
+      Day
+    </div>
+    <div class="col-2" style="color: white">
+      Date
+    </div>
+    <div class="col-2" style="color: white">
+      Specialization
+    </div>
+
+    <div class="col-2" style="color: white">
+      Phone
+    </div>
+
+    <div class="col-1" style="color: white">
+      Status
+    </div>
+
+
+  </div>
+  <div *cdkVirtualFor="let appointment of appointments;let i = index" class="example-item" id="one-doctor">
+
+    <div class="row" style="margin: 0">
+
+      <div class="col-2">
+        Dr. {{appointment.slot.user.name}}
+      </div>
+
+      <div class="col-1">
+        {{formatDate(appointment.slot.date, "hh:mm a")}}
+      </div>
+
+      <div class="col-1">
+        {{formatDate(appointment.slot.date, "EEEE")}}
+      </div>
+
+      <div class="col-2">
+        {{formatDate(appointment.slot.date, "MMM, dd, YYYY")}}
+      </div>
+
+      <div class="col-2" style="background-color: transparent">
+        {{appointment.slot.user.specialization}}
+      </div>
+
+      <div class="col-2" style="background-color: transparent">
+        {{appointment.slot.user.phone}}
+      </div>
+
+      <div class="col-1" style="background-color: transparent">
+        {{appointment.slot.status}}
+      </div>
+
+
+
+    </div>
+    <hr style="margin-left:  5px; margin-right: 5px;margin-top: 10px">
+
+  </div>
+
+
+</cdk-virtual-scroll-viewport>
