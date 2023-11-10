@@ -54,6 +54,7 @@
   }
 
 </style>
+
 <div class="row" style="background-color: #008170 ;width: 100%">
 
   <div class="col-3" style="background-color: transparent">
@@ -75,7 +76,7 @@
   <ul style="text-align: center;background-color: transparent;  list-style-type: none;">
     <li *ngFor="let slot of this.doctor?.slots">
       <div id="slot-data" *ngIf="slot.status=='available'">
-        <h1>{{formatDate(slot.date!, "MMMM, dd, YYYY")}}</h1>
+        <h1>{{formatDate(slot.date!, "MMMM dd, YYYY")}}</h1>
         <hr>
         <h1>{{formatDate(slot.date!, "EEEE")}}</h1>
         <hr>

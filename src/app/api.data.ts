@@ -9,5 +9,6 @@ export class ApiData {
   static search = "/user/searchByDoctorName";
   static appointment = "/appointment/";
   static myAppointment = "/appointment";
+  static geeDoctorSlotById = "/user/getSlotByDrId/";
 
 }

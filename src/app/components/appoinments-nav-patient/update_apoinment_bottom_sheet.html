@@ -1,0 +1,91 @@
+
+<html>
+<style>
+  .mat-typography::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    background-color: #eef3f4;
+
+  }
+
+  .ratings i {
+
+    color: #cecece;
+    font-size: 32px;
+  }
+
+
+  .small-ratings i {
+    color: #cecece;
+  }
+
+
+  p {
+    color: white;
+  }
+
+  h2 {
+    color: white;
+
+  }
+
+  h4 {
+    color: white;
+  }
+
+  h5 {
+    color: white;
+  }
+
+  h6 {
+    color: white;
+  }
+
+  #slot-data {
+    background-color: #232D3F;
+    color: white;
+    padding: 10px;
+    height: auto;
+    margin: 10px 30%;
+    /*width: 300px;*/
+    text-align: center;
+    border-radius: 15px;
+  }
+
+</style>
+
+
+<mat-tab-group style="width: 40vw;height: 90vh">
+  <mat-tab label="Same Doctor">
+
+
+    <ul style="text-align: center;background-color: transparent;  list-style-type: none;">
+      <li *ngFor="let slot of this.sameSlots">
+        <div id="slot-data" *ngIf="slot.status=='available'">
+          <h3>{{formatDate(slot.date!, "MMMM dd, YYYY")}}</h3>
+          <hr>
+          <h3>{{formatDate(slot.date!, "EEEE")}}</h3>
+          <hr>
+          <h3>{{formatHours(slot.date!)}}</h3>
+        </div>
+        <button class="btn btn-primary" *ngIf="slot.status=='available'"
+                style="background-color: #008170 ;border-color: transparent;margin: 5px"
+        >Register
+        </button>
+        <!--        <hr>-->
+      </li>
+    </ul>
+
+
+
+
+  </mat-tab>
+  <mat-tab label="Another Doctors"> Content 2 </mat-tab>
+</mat-tab-group>
+
+
+
+</html>
+

@@ -53,7 +53,7 @@
       </div>
 
       <div class="col-1">
-        {{formatDate(appointment.slot.date, "hh:mm a")}}
+        {{formatHours(appointment.slot.date)}}
       </div>
 
       <div class="col-1">
@@ -73,15 +73,20 @@
       </div>
 
       <div class="col-1" style="background-color: transparent">
-        {{appointment.slot.status}}
+        {{appointment.status}}
       </div>
 
-      <div class="col" style="background-color: transparent">
+      <div class="col" style="background-color: transparent" *ngIf="appointment.status=='reserved'">
         <div class="row">
           <button class="col btn btn-primary"
-            style="background-color: #008170;border-color: #008170; height: auto; font-size: 10px; margin: 2px;">Edit</button>
+            style="background-color: #008170;border-color: #008170; height: auto; font-size: 10px; margin: 2px;" (click)="openEditDialog(appointment.slot.user.id)">Edit</button>
           <button class="col btn btn-primary" (click)="cancelApooinment(appointment.id)"
             style="background-color: red;border-color: red; height: auto; font-size: 10px;margin: 2px;" >Cancel</button>
+        </div>
+      </div>
+      <div class="col" style="background-color: transparent" *ngIf="appointment.status=='cancel'">
+        <div class="row" style="text-align: center">
+         <h6>No Action Needed</h6>
         </div>
       </div>
 

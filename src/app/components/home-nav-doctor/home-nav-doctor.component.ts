@@ -38,7 +38,7 @@ export class HomeNavDoctorComponent {
 
     // format date
     const datePipe: DatePipe = new DatePipe('en-US');
-    let formattedDate = datePipe.transform(Date.parse(date), 'MMMM, dd, YYYY ');
+    let formattedDate = datePipe.transform(Date.parse(date), 'MMMM dd, YYYY ');
 
     if (formattedDate != null) {
       formattedDate += time + ":00";

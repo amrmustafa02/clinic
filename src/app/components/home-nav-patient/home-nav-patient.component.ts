@@ -9,6 +9,7 @@ import {DatePipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 import {UserUtils} from "../utils/user.utils";
 import {ToastrService} from "ngx-toastr";
+import {Format} from "@angular-devkit/build-angular/src/builders/extract-i18n/schema";
 
 export interface PeriodicElement {
   name: string;
@@ -45,7 +46,11 @@ export class HomeNavPatientComponent {
   }
 
  async getDoctorsWithSlots() {
-    this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors).subscribe(
+    this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors,{
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
       (data) => {
         console.log(data);
         this.doctors = data.user;
@@ -78,7 +83,7 @@ export class HomeNavPatientComponent {
 
 
   async openDialog(index: number) {
-    
+
     console.log(index);
     // this.doctors=[];
     await this.getDoctorsWithSlots();
@@ -133,10 +138,16 @@ export class DialogOverviewExampleDialog {
   }
 
   formatHours(date: string) {
+
+    const dat = new Date(date);
+
+    dat.setHours(dat.getHours()-2);
+
     const datepipe: DatePipe = new DatePipe('en-US')
-    const dat = Date.parse(date);
-    let formattedDate = datepipe.transform(dat, 'hh:mm a')
-    // console.log(formattedDate);
+
+    let formattedDate = datepipe.transform(dat, ' hh:mm a')
+
+
     return formattedDate;
   }
 
