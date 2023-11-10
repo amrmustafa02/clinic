@@ -1,11 +1,12 @@
-<html>
+<html style="width: 50vw">
 <style>
   .mat-typography::-webkit-scrollbar {
-    display: none;
+    /*display: none;*/
   }
 
   body {
     background-color: #eef3f4;
+
   }
 
   .ratings i {
@@ -15,11 +16,9 @@
   }
 
 
-
   .small-ratings i {
     color: #cecece;
   }
-
 
 
   p {
@@ -39,6 +38,10 @@
     color: white;
   }
 
+  h6 {
+    color: white;
+  }
+
   #slot-data {
     background-color: #232D3F;
     color: white;
@@ -51,35 +54,35 @@
   }
 
 </style>
-<div class="row" style="background-color: #008170">
+<div class="row" style="background-color: #008170 ;width: 100%">
 
   <div class="col-3" style="background-color: transparent">
-    <img [src]="src" style="height:100%;width: 90% ;margin: 3px" alt="">
+    <img [src]="src" style="height:100%;width: 100% ;margin: 3px" alt="">
   </div>
 
   <div class="col align-items-center" style="background-color: transparent;text-align: start;margin-top: 2%">
     <h2>Dr. {{this.doctor?.name}}</h2>
     <h4>Doctor specializing in {{this.doctor?.specialization}}</h4>
-    <h5>You can contact the doctor via phone : {{this.doctor?.phone}}</h5>
-    <h5>Also via following email : {{this.doctor?.email}}</h5>
+    <h6>You can contact the doctor via phone : {{this.doctor?.phone}}</h6>
+    <h6>Also via following email : {{this.doctor?.email}}</h6>
   </div>
 
 </div>
 
 <mat-dialog-content class="mat-typography justify-content-center"
-                    style="text-align: center; height: 45vh; width:100% ;background-color: transparent">
+                    style="text-align: center; height: 50vh; width:100% ;background-color: transparent">
 
   <ul style="text-align: center;background-color: transparent;  list-style-type: none;">
-    <li *ngFor="let slot of this.doctor?.slots" >
-      <div id="slot-data">
-        <h1>{{formatDate(slot.date!,"MMMM, dd, YYYY")}}</h1>
+    <li *ngFor="let slot of this.doctor?.slots">
+      <div id="slot-data" *ngIf="slot.status=='available'">
+        <h1>{{formatDate(slot.date!, "MMMM, dd, YYYY")}}</h1>
         <hr>
-        <h1>{{formatDate(slot.date!,"EEEE")}}</h1>
+        <h1>{{formatDate(slot.date!, "EEEE")}}</h1>
         <hr>
         <h1>{{formatHours(slot.date!)}}</h1>
       </div>
-      <button class="btn btn-primary" style="background-color: #008170 ;border-color: transparent">Register</button>
-<!--        <hr>-->
+      <button class="btn btn-primary" style="background-color: #008170 ;border-color: transparent;margin: 5px">Register</button>
+      <!--        <hr>-->
     </li>
   </ul>
 
@@ -98,8 +101,8 @@
 <!--  </cdk-virtual-scroll-viewport>-->
 <!--</div>-->
 
-<mat-dialog-actions align="end" style="background-color: transparent;">
-  <button mat-button mat-dialog-close style="background-color: #008170;color: white;width: 100px">Cancel</button>
-</mat-dialog-actions>
+<!--<mat-dialog-actions align="end" style="background-color: transparent;">-->
+<!--  <button mat-button mat-dialog-close style="background-color: #008170;color: white;width: 100px">Cancel</button>-->
+<!--</mat-dialog-actions>-->
 
 </html>

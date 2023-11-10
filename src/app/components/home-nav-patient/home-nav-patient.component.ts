@@ -5,7 +5,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Doctor, SearchDoctorBody} from "../../models/patient/search_doctors_body";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MatButtonModule} from "@angular/material/button";
-import {DatePipe, NgForOf, NgOptimizedImage} from "@angular/common";
+import {DatePipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
 
 export interface PeriodicElement {
@@ -101,7 +101,8 @@ export class HomeNavPatientComponent {
     NgForOf,
     CdkFixedSizeVirtualScroll,
     CdkVirtualScrollViewport,
-    CdkVirtualForOf
+    CdkVirtualForOf,
+    NgIf
   ]
 })
 export class DialogOverviewExampleDialog {
