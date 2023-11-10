@@ -6,6 +6,7 @@ export class ApiData {
   static addSlotEndPoint = "/slot";
   static getDoctors = "/user/GetDoctorWithSlots";
   static search = "/user/searchByDoctorName";
+  static appointment = "/appointment/";
 
 
 }

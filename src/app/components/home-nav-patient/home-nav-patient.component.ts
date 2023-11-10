@@ -7,6 +7,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from '@angula
 import {MatButtonModule} from "@angular/material/button";
 import {DatePipe, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} from "@angular/cdk/scrolling";
+import {UserUtils} from "../utils/user.utils";
+import {ToastrService} from "ngx-toastr";
 
 export interface PeriodicElement {
   name: string;
@@ -77,6 +79,8 @@ export class HomeNavPatientComponent {
 
   openDialog(index: number) {
     console.log(index);
+    // this.doctors=[];
+    // this.getDoctorsWithSlots();
 
     const data = JSON.stringify(this.doctors[index]);
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -112,13 +116,13 @@ export class DialogOverviewExampleDialog {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: User,
+    private http: HttpClient,
+    private toast: ToastrService,
   ) {
     this.doctor = data;
     if (this.doctor.gender == "male") {
       this.src = "/assets/images/doctor-avatar.png"
     }
-
-
   }
 
   onNoClick(): void {
@@ -129,16 +133,43 @@ export class DialogOverviewExampleDialog {
     const datepipe: DatePipe = new DatePipe('en-US')
     const dat = Date.parse(date);
     let formattedDate = datepipe.transform(dat, 'hh:mm a')
-    console.log(formattedDate);
+    // console.log(formattedDate);
     return formattedDate;
   }
-  formatDate(date: string,format:string) {
+
+  formatDate(date: string, format: string) {
+
     const datepipe: DatePipe = new DatePipe('en-US')
+
     const dat = Date.parse(date);
+
     // let formattedDate = datepipe.transform(dat, 'MMMM, dd EEE, YYYY')
+
     let formattedDate = datepipe.transform(dat, format);
-    console.log(formattedDate);
+
+    // console.log(formattedDate);
+
     return formattedDate;
+  }
+
+  clickOnRegister(slotId: number) {
+    this.toast.info("Please wait");
+    this.http.post(ApiData.baseUrl + ApiData.appointment + slotId, {}, {
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
+      (data) => {
+        console.log(data);
+        this.toast.success("Register Successfully");
+        this.onNoClick();
+      },
+      (error: HttpErrorResponse) => {
+        this.toast.error(error.error["mesgError"]);
+        this.onNoClick();
+
+      }
+    );
   }
 
 }

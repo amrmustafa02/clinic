@@ -81,7 +81,10 @@
         <hr>
         <h1>{{formatHours(slot.date!)}}</h1>
       </div>
-      <button class="btn btn-primary" style="background-color: #008170 ;border-color: transparent;margin: 5px">Register</button>
+      <button class="btn btn-primary" *ngIf="slot.status=='available'"
+              style="background-color: #008170 ;border-color: transparent;margin: 5px"
+              (click)="clickOnRegister(slot.id)">Register
+      </button>
       <!--        <hr>-->
     </li>
   </ul>
