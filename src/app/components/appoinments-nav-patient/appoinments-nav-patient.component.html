@@ -4,7 +4,7 @@
       <span class="input-group-text" id="basic-addon1">Dr/</span>
     </div>
     <input #searchName type="text" class="form-control" placeholder="Enter doctor name" aria-label="Username"
-           aria-describedby="basic-addon1">
+      aria-describedby="basic-addon1">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" id="search-button" type="button">Search</button>
     </div>
@@ -14,7 +14,7 @@
 <cdk-virtual-scroll-viewport [itemSize]="appointments!.length!" class="example-viewport" style="scrollbar-width: none;">
 
   <div class="row"
-       style="margin: 5px;padding-top:5px;padding-bottom: 5px ;background-color: #232D3F ;border-radius: 8px">
+    style="margin: 5px;padding-top:5px;padding-bottom: 5px ;background-color: #232D3F ;border-radius: 8px">
     <div class="col-2" style="color: white">
       Doctor Name
     </div>
@@ -31,12 +31,15 @@
       Specialization
     </div>
 
-    <div class="col-2" style="color: white">
+    <div class="col-1" style="color: white">
       Phone
     </div>
 
     <div class="col-1" style="color: white">
       Status
+    </div>
+    <div class="col" style="color: white;text-align: center;">
+      Action
     </div>
 
 
@@ -65,7 +68,7 @@
         {{appointment.slot.user.specialization}}
       </div>
 
-      <div class="col-2" style="background-color: transparent">
+      <div class="col-1" style="background-color: transparent">
         {{appointment.slot.user.phone}}
       </div>
 
@@ -73,7 +76,14 @@
         {{appointment.slot.status}}
       </div>
 
-
+      <div class="col" style="background-color: transparent">
+        <div class="row">
+          <button class="col btn btn-primary"
+            style="background-color: #008170;border-color: #008170; height: auto; font-size: 10px; margin: 2px;">Edit</button>
+          <button class="col btn btn-primary" (click)="cancelApooinment(appointment.id)"
+            style="background-color: red;border-color: red; height: auto; font-size: 10px;margin: 2px;" >Cancel</button>
+        </div>
+      </div>
 
     </div>
     <hr style="margin-left:  5px; margin-right: 5px;margin-top: 10px">

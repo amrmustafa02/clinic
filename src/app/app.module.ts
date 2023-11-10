@@ -35,7 +35,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MdbCheckboxModule} from 'mdb-angular-ui-kit/checkbox';
 import { MatDialogModule} from '@angular/material/dialog';
 import { AppoinmentsNavPatientComponent } from './components/appoinments-nav-patient/appoinments-nav-patient.component';
-
+import { MatIconRegistry } from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +82,8 @@ import { AppoinmentsNavPatientComponent } from './components/appoinments-nav-pat
   ],
   providers: [
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatIconRegistry,
 
   ],
   bootstrap: [AppComponent]

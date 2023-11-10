@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {ApiData} from "../../api.data";
-import {UserUtils} from "../utils/user.utils";
-import {Appointment, GetAppointmentResponseBody} from "../../models/patient/get.appointments.reponsr.body";
-import {DatePipe} from "@angular/common";
+import { Component } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { ApiData } from "../../api.data";
+import { UserUtils } from "../utils/user.utils";
+import { Appointment, GetAppointmentResponseBody } from "../../models/patient/get.appointments.reponsr.body";
+import { DatePipe } from "@angular/common";
+import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-appoinments-nav-patient',
@@ -15,7 +17,7 @@ export class AppoinmentsNavPatientComponent {
   appointments?: Appointment[] = [];
 
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toast: ToastrService) {
     this.myAppointment();
   }
 
@@ -51,4 +53,22 @@ export class AppoinmentsNavPatientComponent {
     return formattedDate;
   }
 
+
+  cancelApooinment(slotId: number) {
+    this.toast.info("Please wait");
+    this.http.put(ApiData.baseUrl + ApiData.appointment + slotId, {}, {
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
+      (data) => {
+        console.log(data);
+        this.toast.success("Cancel Successfully");
+      },
+      (error: HttpErrorResponse) => {
+        this.toast.error(error.error["mesgError"]);
+
+      }
+    );
+  }
 }

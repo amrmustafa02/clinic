@@ -44,7 +44,7 @@ export class HomeNavPatientComponent {
     this.getDoctorsWithSlots();
   }
 
-  getDoctorsWithSlots() {
+ async getDoctorsWithSlots() {
     this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors).subscribe(
       (data) => {
         console.log(data);
@@ -77,18 +77,21 @@ export class HomeNavPatientComponent {
   }
 
 
-  openDialog(index: number) {
+  async openDialog(index: number) {
+    
     console.log(index);
     // this.doctors=[];
-    // this.getDoctorsWithSlots();
+    await this.getDoctorsWithSlots();
 
     const data = JSON.stringify(this.doctors[index]);
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       data: this.doctors[index]
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe(async result => {
       console.log(`Dialog result: ${result}`);
+      this.doctors = [];
+      await this.getDoctorsWithSlots();
     });
   }
 }
