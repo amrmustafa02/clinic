@@ -3,10 +3,10 @@
     <div class="input-group-prepend">
       <span class="input-group-text" id="basic-addon1">Dr/</span>
     </div>
-    <input #searchName type="text" class="form-control" placeholder="Docotor Name" aria-label="Username"
+    <input #searchName type="text" class="form-control" placeholder="Enter doctor name" aria-label="Username"
            aria-describedby="basic-addon1">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="searchByName(searchName.value)">Search</button>
+      <button class="btn btn-outline-secondary"  id="search-button" type="button" (click)="searchByName(searchName.value)">Search</button>
     </div>
   </div>
 

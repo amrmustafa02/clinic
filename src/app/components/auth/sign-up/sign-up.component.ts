@@ -63,14 +63,14 @@ Please enter password should
   clickOnRegister() {
 
     this.extractFields();
-    var isSuccess = this.handleFields()
+    const isSuccess = this.handleFields();
 
     if (!isSuccess) {
       return;
     }
 
 
-    var body = new SignUpRequestBody();
+    const body = new SignUpRequestBody();
     body.name = this.name;
     body.age = this.age;
     body.email = this.email;

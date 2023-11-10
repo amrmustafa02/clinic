@@ -31,3 +31,8 @@
   /*opacity: 0.5;*/
   cursor: pointer;
 }
+
+#search-button:hover{
+  background-color: #008170;
+  color: white;
+}

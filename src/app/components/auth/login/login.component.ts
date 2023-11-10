@@ -8,6 +8,7 @@ import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Observable} from 'rxjs/internal/Observable';
 import {UserModel} from 'src/app/models/home-doctor/user.model';
 import {RoutesData} from 'src/app/routes';
+import {ErrorModel} from "../../../models/auth/error.model";
 
 @Component({
   selector: 'app-login',
@@ -58,8 +59,7 @@ export class LoginComponent {
           }
         },
         (err: HttpErrorResponse) => {
-          this.toast.error("Email or password is not correct");
-
+          this.toast.error(err.error["mesgError"]);
         }
       );
     }
