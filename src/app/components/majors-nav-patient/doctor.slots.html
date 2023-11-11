@@ -1,0 +1,112 @@
+<html style="width: 50vw">
+<style>
+  .mat-typography::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    background-color: #eef3f4;
+
+  }
+
+  .ratings i {
+
+    color: #cecece;
+    font-size: 32px;
+  }
+
+
+  .small-ratings i {
+    color: #cecece;
+  }
+
+
+  p {
+    color: white;
+  }
+
+  h2 {
+    color: white;
+
+  }
+
+  h4 {
+    color: white;
+  }
+
+  h5 {
+    color: white;
+  }
+
+  h6 {
+    color: white;
+  }
+
+  #slot-data {
+    background-color: #232D3F;
+    color: white;
+    padding: 10px;
+    height: 200px;
+    margin: 10px 30%;
+    /*width: 300px;*/
+    text-align: center;
+    border-radius: 15px;
+  }
+
+</style>
+
+<div class="row" style="background-color: #008170 ;width: 100%">
+
+  <div class="col-3" style="background-color: transparent">
+    <img [src]="src" style="height:100%;width: 100% ;margin: 3px" alt="">
+  </div>
+
+  <div class="col align-items-center" style="background-color: transparent;text-align: start;margin-top: 2%">
+    <h2>Dr. {{this.doctor?.name}}</h2>
+    <h4>Doctor specializing in {{this.doctor?.specialization}}</h4>
+    <h6>You can contact the doctor via phone : {{this.doctor?.phone}}</h6>
+    <h6>Also via following email : {{this.doctor?.email}}</h6>
+  </div>
+
+</div>
+
+<mat-dialog-content class="mat-typography justify-content-center"
+                    style="text-align: center; height: 50vh; width:100% ;background-color: transparent">
+
+  <ul style="text-align: center;background-color: transparent;  list-style-type: none;">
+    <li *ngFor="let slot of this.doctor?.slots">
+      <div id="slot-data" *ngIf="slot.status=='available'">
+        <h1>{{formatDate(slot.date!, "MMMM dd, YYYY")}}</h1>
+        <hr>
+        <h1>{{formatDate(slot.date!, "EEEE")}}</h1>
+        <hr>
+        <h1>{{formatHours(slot.date!)}}</h1>
+      </div>
+      <button class="btn btn-primary" *ngIf="slot.status=='available'"
+              style="background-color: #008170 ;border-color: transparent;margin: 5px"
+              (click)="clickOnRegister(slot.id)">Register
+      </button>
+      <!--        <hr>-->
+    </li>
+  </ul>
+
+
+</mat-dialog-content>
+
+<!--<div class="cdk-virtual-scroll-data-source-example" style="height: 500px;">-->
+<!--  <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="10" class="example-viewport">-->
+<!--    <div *cdkVirtualFor="let slot of this.doctor?.slots" class="example-item">-->
+<!--      <li id="slot-data">-->
+<!--        <h1>{{formatDate(slot.date!)}}</h1>-->
+<!--        <h1>{{formatHours(slot.date!)}}</h1>-->
+<!--      </li>-->
+<!--    </div>-->
+
+<!--  </cdk-virtual-scroll-viewport>-->
+<!--</div>-->
+
+<!--<mat-dialog-actions align="end" style="background-color: transparent;">-->
+<!--  <button mat-button mat-dialog-close style="background-color: #008170;color: white;width: 100px">Cancel</button>-->
+<!--</mat-dialog-actions>-->
+
+</html>
