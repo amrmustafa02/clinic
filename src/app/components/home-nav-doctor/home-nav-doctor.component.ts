@@ -23,7 +23,7 @@ export class HomeNavDoctorComponent {
 
   user?: UserModel;
 
-  todaySlot?: Slot[];
+  todaySlot: Slot[] = [];
 
 
   constructor(private http: HttpClient, private toast: ToastrService) {
@@ -82,9 +82,31 @@ export class HomeNavDoctorComponent {
   }
 
   async getToadySlots(): Promise<void> {
-    await this.getSlotsUser();
+    this.http.get<SlotsModel>(ApiData.baseUrl + "/slot",
+      {
+        headers: {
+          "authenticated": "key_" + UserUtils.token
+        }
+      }).subscribe(
+      (data) => {
+        this.todaySlot = [];
+        console.log(data);
+        // this.todaySlot = data.slots;
+        const toadyDate = this.formatDate(Date(), "MMMM dd YYYY");
 
+        for (let i = 0; i < data!.slots.length; i++) {
 
+          const slotDate = this.formatDate(data.slots![i].date, "MMMM dd YYYY");
+          if (slotDate == toadyDate && data.slots[i].appointment != null) {
+            console.log("enter");
+            this.todaySlot!.push(data.slots[i]);
+          }
+          // this.todaySlot!.push(data.slots[i]);
+
+        }
+        // console.log(this.todaySlot);
+      }
+    );
   }
 
   formatDate(date: string, format: string) {
@@ -102,28 +124,22 @@ export class HomeNavDoctorComponent {
     return formattedDate;
   }
 
-  async getSlotsUser() {
 
-    this.http.get<SlotsModel>(ApiData.baseUrl + "/slot",
-      {
-        headers: {
-          "authenticated": "key_" + UserUtils.token
-        }
-      }).subscribe(
-      (data) => {
-        // this.todaySlot = data.slots;
-        console.log(data);
 
-        const toadyDate = this.formatDate(Date(), "MMMM dd YYYY");
-        for (let i = 0; i < data.slots!.length; i++) {
-          const slotDate = this.formatDate(data.slots![i].date, "MMMM dd YYYY");
-          if (slotDate == toadyDate) {
-            this.todaySlot!.push(data.slots[i]);
-          }
-        }
-      }
-    );
+  formatHours(date: string) {
+
+    const dat = new Date(date);
+
+    dat.setHours(dat.getHours() - 2);
+
+    const datepipe: DatePipe = new DatePipe('en-US')
+
+    let formattedDate = datepipe.transform(dat, ' hh:mm a')
+
+
+    return formattedDate;
   }
 
   protected readonly Date = Date;
+  protected readonly screenLeft = screenLeft;
 }

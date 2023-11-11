@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { UserUtils } from '../../utils/user.utils';
-import { UserModel } from 'src/app/models/home-doctor/user.model';
+import {Component} from '@angular/core';
+import {UserUtils} from '../../utils/user.utils';
+import {UserModel} from 'src/app/models/home-doctor/user.model';
 
 @Component({
   selector: 'app-home-doctor',
@@ -12,6 +12,7 @@ export class HomeDoctorComponent {
   doctor?: UserModel;
 
   src = "/assets/images/doctor-avatar-2.png";
+
   constructor() {
 
     console.log("userr");
@@ -25,6 +26,10 @@ export class HomeDoctorComponent {
 
     console.log(UserUtils.token)
 
+  }
+
+  logOut(){
+    localStorage.setItem('remeber', "false");
   }
 
 
