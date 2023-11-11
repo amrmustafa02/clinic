@@ -4,6 +4,7 @@ import {UserUtils} from '../../utils/user.utils';
 import {UserModel} from "../../../models/home-doctor/user.model";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ApiData} from "../../../api.data";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-patient',
@@ -16,7 +17,7 @@ export class HomePatientComponent {
 
   src = "/assets/images/woman.png";
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private route: Router) {
 
     console.log(UserUtils.user);
     this.patient = UserUtils.user;
@@ -27,11 +28,13 @@ export class HomePatientComponent {
     // this.getDoctorsWithSlots();
   }
 
-  logOut(){
+  logOut() {
     localStorage.setItem('remeber', "false");
+    UserUtils.role = "";
+    this.route.navigate(["/role"], {
+      replaceUrl: true
+    });
   }
-
-
 
 
 }

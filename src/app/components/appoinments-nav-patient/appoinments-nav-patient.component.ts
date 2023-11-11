@@ -1,4 +1,4 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject,ViewEncapsulation} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ApiData} from "../../api.data";
 import {UserUtils} from "../utils/user.utils";
@@ -172,6 +172,7 @@ export class AppoinmentsNavPatientComponent {
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'update_apoinment_bottom_sheet.html',
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
   imports: [MatDialogModule, MatTabsModule, NgForOf, NgIf, FormLabelDirective,],
 })
 export class DialogOverviewExampleDialog {

@@ -22,7 +22,7 @@ import {GetDoctorsMajorBodyModel, User} from "../../models/patient/get.doctors.m
 })
 export class MajorsNavPatientComponent {
 
-  major = "General Practitioner (GP)";
+  major = "General-Practitioner-(GP)";
   doctors: User[] = [];
 
   constructor(private http: HttpClient, public dialog: MatDialog) {
@@ -49,14 +49,17 @@ export class MajorsNavPatientComponent {
   }
 
   getDoctors(major: string) {
-    this.http.get<GetDoctorsMajorBodyModel>(ApiData.baseUrl + "/user/GetDoctorWithMajors",{
+    this.http.get<GetDoctorsMajorBodyModel>(ApiData.baseUrl + "/user/GetDoctorWithMajors", {
       headers: {
-        "authenticated": "key_" + UserUtils.token
+        "authenticated": "key_" + UserUtils.token,
       },
+      params: {
+        "major": major
+      }
     }).subscribe(
       (data) => {
         console.log(data);
-        // this.doctors = data.user;
+        this.doctors = data.user;
       }
     );
   }

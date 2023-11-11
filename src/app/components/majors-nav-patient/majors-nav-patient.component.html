@@ -6,8 +6,8 @@
     <table>
       <tr>
 
-        <td>
-          <div class="" style="text-align: center;">
+        <td (click)="getDoctors('General-Practitioner-(GP)')">
+          <div style="text-align: center; ">
             <img src="/assets/icons/stethoscope.png" style="height: 200px ;margin: 10px">
             <h6>
               General Practitioner (GP)
@@ -16,17 +16,16 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Cardiologist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/cardiologist.png" style="height: 200px ;margin: 10px">
             <h6>
               Cardiologist
             </h6>
           </div>
-
         </td>
 
-        <td>
+        <td (click)="getDoctors('Orthopedic-Surgeon')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/orthopedics.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -36,7 +35,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Dermatologist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/dermatologist.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -46,7 +45,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Pediatrician')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/pediatrician.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -56,7 +55,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Gynecologist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/gynecologist.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -66,7 +65,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Anesthesiologist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/anesthesiologist.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -76,7 +75,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Radiologist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/medical.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -86,7 +85,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Neurologist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/neurologist.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -96,7 +95,7 @@
 
         </td>
 
-        <td>
+        <td (click)="getDoctors('Psychiatrist')">
           <div class="" style="text-align: center;">
             <img src="/assets/icons/therapy.png" style="height: 200px ;margin: 10px">
             <h6>
@@ -119,33 +118,38 @@
       <div class="col-2" style="color: white">
         Name
       </div>
-      <div class="col-3" style="color: white">
+      <div class="col-2" style="color: white">
         Email
       </div>
-      <div class="col-1" style="color: white">
+      <div class="col-1" style="color: white;background-color: transparent ;padding: 0">
         Age
       </div>
-      <div class="col-3" style="color: white">
+      <div class="col-2" style="color: white">
         Specialization
       </div>
       <div class="col-2" style="color: white">
         Phone
       </div>
     </div>
-    <div *cdkVirtualFor="let doctor of doctors;let i = index" class="example-item" id="one-doctor" (click)="openDialog(i)">
+    <div class="row justify-content-center" *ngIf="doctors.length==0" style="text-align: center">
+      No Doctors Found
+    </div>
+    <div *cdkVirtualFor="let doctor of doctors;let i = index" class="example-item" id="one-doctor"
+         (click)="openDialog(i)">
+
 
       <div class="row" style="margin: 0">
         <div class="col-2">
           {{doctor.name}}
         </div>
-        <div class="col-3">
+        <div class="col-2">
           {{doctor.email}}
 
         </div>
         <div class="col-1">
           {{doctor.age}}
         </div>
-        <div class="col-3">
+        <div class="col-2">
           {{doctor.specialization}}
         </div>
         <div class="col-2" style="background-color: transparent">
@@ -155,7 +159,6 @@
       <hr style="margin-left:  5px; margin-right: 5px;margin-top: 10px">
 
     </div>
-
 
   </cdk-virtual-scroll-viewport>
 

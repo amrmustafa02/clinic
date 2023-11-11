@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import {UserUtils} from "../../utils/user.utils";
 
 @Component({
   selector: 'app-choose-role',
@@ -14,9 +15,11 @@ export class ChooseRoleComponent {
   }
 
   clickOnDoctor(): void {
+    UserUtils.role = "doctor";
     this.route.navigate(["/sign-up"], { state: { role: 'doctor' }, replaceUrl: true });
   }
   clicOnPatient(): void {
+    UserUtils.role = "patient";
     this.route.navigate(["/sign-up"], { state: { role: 'patient' }, replaceUrl: true });
   }
 

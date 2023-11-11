@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {UserUtils} from '../../utils/user.utils';
 import {UserModel} from 'src/app/models/home-doctor/user.model';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home-doctor',
@@ -13,7 +14,7 @@ export class HomeDoctorComponent {
 
   src = "/assets/images/doctor-avatar-2.png";
 
-  constructor() {
+  constructor(private route:Router) {
 
     console.log("userr");
     console.log(UserUtils.user);
@@ -30,6 +31,7 @@ export class HomeDoctorComponent {
 
   logOut(){
     localStorage.setItem('remeber', "false");
+    this.route.navigate(["/role"]);
   }
 
 

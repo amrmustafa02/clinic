@@ -19,3 +19,55 @@ td:hover {
   cursor: pointer;
   color: #008170;
 }
+.example-viewport {
+  margin-top: 10px;
+  /*padding: 10px;*/
+  height: 50vh;
+  width: 85vw;
+  /*padding: 0;*/
+  /*margin: 0;*/
+  /*border: 1px solid black;*/
+}
+
+.example-item {
+  height: auto;
+  /*padding: 0;*/
+  /*margin: 0;*/
+}
+
+.example-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+
+#one-doctor {
+  cursor: pointer;
+  padding: 5px;
+  margin: 0;
+  border-radius: 8px;
+  width: 83vw;
+}
+
+#one-doctor:hover {
+  /*background-color:black;*/
+  color: #008170;
+  /*opacity: 0.5;*/
+  cursor: pointer;
+}
+
+#search-button:hover {
+  background-color: #008170;
+  color: white;
+}
+
+#refresh-btn {
+  background-color: white;
+  border-color: #008170;
+  color: #008170;
+}
+
+#refresh-btn:hover {
+  background-color: #008170;
+  color: white;
+  border-color: #008170;
+}
