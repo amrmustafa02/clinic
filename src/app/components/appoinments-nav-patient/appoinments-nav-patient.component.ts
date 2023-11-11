@@ -43,6 +43,30 @@ export class AppoinmentsNavPatientComponent {
     );
   }
 
+  search(name: string) {
+    this.http.get<GetAppointmentResponseBody>(ApiData.baseUrl + ApiData.myAppointment, {
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
+      (data) => {
+        console.log(data);
+        this.appointments = data.appointments;
+        this.appointments[0].slot.date
+        for (let i = 0; i < this.appointments!.length; i++) {
+          if (this.appointments![i].slot.user.name.includes(name)) {
+            console.log(i);
+            console.log(this.appointments.length);
+            this.appointments!.slice(i, 1);
+            // i--;
+          }
+        }
+
+      }
+    );
+
+  }
+
   formatDate(date: string, format: string) {
 
     const datepipe: DatePipe = new DatePipe('en-US')
@@ -156,6 +180,7 @@ export class DialogOverviewExampleDialog {
     );
   }
 
+
   getAnotherDoctorsWithSlots() {
     this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors, {
       headers: {
@@ -203,7 +228,7 @@ export class DialogOverviewExampleDialog {
 
     this.http.put(ApiData.baseUrl + ApiData.updateAppointment + this.appointmentId, {
       "slot": slotID,
-    },{
+    }, {
       headers: {
         "authenticated": "key_" + UserUtils.token
       }
@@ -217,6 +242,7 @@ export class DialogOverviewExampleDialog {
       }
     );
   }
+
 
 }
 

@@ -10,6 +10,7 @@ import {CdkFixedSizeVirtualScroll, CdkVirtualForOf, CdkVirtualScrollViewport} fr
 import {UserUtils} from "../utils/user.utils";
 import {ToastrService} from "ngx-toastr";
 import {Format} from "@angular-devkit/build-angular/src/builders/extract-i18n/schema";
+import {GetDoctorSlotsByIdResponseBody, Slot} from "../../models/patient/get_docots_slots__idresponse_body";
 
 export interface PeriodicElement {
   name: string;
@@ -45,8 +46,8 @@ export class HomeNavPatientComponent {
     this.getDoctorsWithSlots();
   }
 
- async getDoctorsWithSlots() {
-    this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors,{
+  async getDoctorsWithSlots() {
+    this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors, {
       headers: {
         "authenticated": "key_" + UserUtils.token
       }
@@ -69,6 +70,9 @@ export class HomeNavPatientComponent {
     this.http.get<SearchDoctorBody>(ApiData.baseUrl + ApiData.search, {
       params: {
         "name": name,
+      },
+      headers: {
+        "authenticated": "key_" + UserUtils.token
       }
     }).subscribe(
       (data) => {
@@ -86,7 +90,7 @@ export class HomeNavPatientComponent {
 
     console.log(index);
     // this.doctors=[];
-    await this.getDoctorsWithSlots();
+    // await this.getDoctorsWithSlots();
 
     const data = JSON.stringify(this.doctors[index]);
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
@@ -131,17 +135,31 @@ export class DialogOverviewExampleDialog {
     if (this.doctor.gender == "male") {
       this.src = "/assets/images/doctor-avatar.png"
     }
+    this.getDoctorsByIdById(this.doctor.id);
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  getDoctorsByIdById(doctorId: number) {
+    this.http.get<GetDoctorSlotsByIdResponseBody>(ApiData.baseUrl +ApiData.geeDoctorSlotById + doctorId, {
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
+      (data) => {
+        console.log(data)
+        this.doctor!.slots = data.slots as Slot[];
+      }
+    );
+  }
+
   formatHours(date: string) {
 
     const dat = new Date(date);
 
-    dat.setHours(dat.getHours()-2);
+    dat.setHours(dat.getHours() - 2);
 
     const datepipe: DatePipe = new DatePipe('en-US')
 
