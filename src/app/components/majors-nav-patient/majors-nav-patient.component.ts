@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-majors-nav-patient',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class MajorsNavPatientComponent {
 
+
+
+
+
+
+  getDoctors(major:string){
+
+  }
 }
