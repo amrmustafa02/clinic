@@ -27,6 +27,11 @@ export class HomePatientComponent {
     // this.getDoctorsWithSlots();
   }
 
+  logOut(){
+    localStorage.setItem('remeber', "false");
+  }
+
+
 
 
 }
