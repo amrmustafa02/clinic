@@ -9,6 +9,8 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogModule, MatDialogRef} from "@angula
 import {MatTabsModule} from "@angular/material/tabs";
 import {Slot} from "../../models/home-doctor/slots.model";
 import {GetDoctorSlotsByIdResponseBody} from "../../models/patient/get_docots_slots__idresponse_body";
+import {GetDoctorsResponseBody} from "../../models/patient/get_doctors_body";
+import {FormLabelDirective} from "@coreui/angular";
 
 @Component({
   selector: 'app-appoinments-nav-patient',
@@ -70,13 +72,18 @@ export class AppoinmentsNavPatientComponent {
     return formattedDate;
   }
 
-  openEditDialog(doctorId: number) {
+  openEditDialog(doctorId: number, appointmentId: number) {
     console.log(doctorId);
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      data: doctorId
+      data: {
+        "doctorId": doctorId,
+        "appointmentId": appointmentId
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.appointments = [];
+      this.myAppointment();
       console.log('The dialog was closed');
     });
   }
@@ -110,18 +117,29 @@ export class AppoinmentsNavPatientComponent {
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'update_apoinment_bottom_sheet.html',
   standalone: true,
-  imports: [MatDialogModule, MatTabsModule, NgForOf, NgIf,],
+  imports: [MatDialogModule, MatTabsModule, NgForOf, NgIf, FormLabelDirective,],
 })
 export class DialogOverviewExampleDialog {
 
   sameSlots: Slot[] = [];
+  appointmentId?: number;
+  curDoctorId?: number;
+  doctorsWithSlots?: GetDoctorsResponseBody;
 
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: number,
-    private http: HttpClient
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private http: HttpClient,
+    private toast: ToastrService
   ) {
-    this.getSlotsDoctorById(data);
+
+    this.curDoctorId = data["doctorId"];
+    this.appointmentId = data["appointmentId"];
+
+    console.log(data);
+
+    this.getSlotsDoctorById(this.curDoctorId!);
+    this.getAnotherDoctorsWithSlots();
   }
 
 
@@ -138,8 +156,17 @@ export class DialogOverviewExampleDialog {
     );
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
+  getAnotherDoctorsWithSlots() {
+    this.http.get<GetDoctorsResponseBody>(ApiData.baseUrl + ApiData.getDoctors, {
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
+      (data) => {
+        console.log(data);
+        this.doctorsWithSlots = data;
+      }
+    );
   }
 
   formatDate(date: string, format: string) {
@@ -169,6 +196,26 @@ export class DialogOverviewExampleDialog {
 
 
     return formattedDate;
+  }
+
+  updateSlot(slotID: number) {
+    this.toast.info("Please wait....");
+
+    this.http.put(ApiData.baseUrl + ApiData.updateAppointment + this.appointmentId, {
+      "slot": slotID,
+    },{
+      headers: {
+        "authenticated": "key_" + UserUtils.token
+      }
+    }).subscribe(
+      (data) => {
+        console.log(data);
+        this.toast.success("update successfully");
+        this.dialogRef.close();
+      }, (err: HttpErrorResponse) => {
+        this.toast.error(err.error["mesgError"]);
+      }
+    );
   }
 
 }

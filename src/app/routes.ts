@@ -10,5 +10,6 @@ export class RoutesData {
   static appointmentNavPatients = "appointment";
   static patientNavHome = "home";
   static majorsHome = "majors";
+  static messagesDoctor = "messages";
 
 }

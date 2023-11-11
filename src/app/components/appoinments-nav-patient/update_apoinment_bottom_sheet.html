@@ -1,7 +1,10 @@
-
 <html>
 <style>
-  .mat-typography::-webkit-scrollbar {
+  mat-tab-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  mat-tab::-webkit-scrollbar {
     display: none;
   }
 
@@ -54,6 +57,24 @@
     border-radius: 15px;
   }
 
+  #slot-data2 {
+    background-color: #232D3F;
+    color: white;
+    padding: 10px;
+    height: auto;
+    margin: 10px 30%;
+    /*width: 300px;*/
+    text-align: center;
+    border-radius: 15px;
+  }
+
+  /*mat-tab-group{*/
+  /*  background-color: #008170;*/
+  /*}*/
+  /*mat-tab{*/
+  /*  color: white;*/
+
+  /*}*/
 </style>
 
 
@@ -72,20 +93,49 @@
         </div>
         <button class="btn btn-primary" *ngIf="slot.status=='available'"
                 style="background-color: #008170 ;border-color: transparent;margin: 5px"
-        >Register
+                (click)="updateSlot(slot.id!)"
+        >
+          Update
         </button>
         <!--        <hr>-->
       </li>
     </ul>
 
+  </mat-tab>
 
+  <mat-tab label="Another Doctors">
+
+    <mat-tab-group>
+      <mat-tab *ngFor="let doctor of this.doctorsWithSlots!.user" [label]="'Dr. '+doctor.name">
+        <ul style="text-align: center;background-color: transparent;  list-style-type: none;">
+          <li *ngFor="let slot of this.doctor.slots">
+            <div id="slot-data2" *ngIf="slot.status=='available'">
+              <h3>{{formatDate(slot.date!, "MMMM dd, YYYY")}}</h3>
+              <hr>
+              <h3>{{formatDate(slot.date!, "EEEE")}}</h3>
+              <hr>
+              <h3>{{formatHours(slot.date!)}}</h3>
+            </div>
+            <button class="btn btn-primary" *ngIf="slot.status=='available'"
+                    style="background-color: #008170 ;border-color: transparent;margin: 5px"
+                    (click)="updateSlot(slot.id!)"
+            >
+              Update
+            </button>
+            <!--        <hr>-->
+          </li>
+        </ul>
+
+      </mat-tab>
+    </mat-tab-group>
 
 
   </mat-tab>
-  <mat-tab label="Another Doctors"> Content 2 </mat-tab>
+
+
 </mat-tab-group>
 
 
-
 </html>
+
 

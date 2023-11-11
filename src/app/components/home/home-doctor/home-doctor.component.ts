@@ -23,6 +23,8 @@ export class HomeDoctorComponent {
       this.src = "/assets/images/doctor-avatar.png";
     }
 
+    console.log(UserUtils.token)
+
   }
 
 

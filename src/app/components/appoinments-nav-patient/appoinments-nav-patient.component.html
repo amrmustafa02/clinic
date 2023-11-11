@@ -79,7 +79,7 @@
       <div class="col" style="background-color: transparent" *ngIf="appointment.status=='reserved'">
         <div class="row">
           <button class="col btn btn-primary"
-            style="background-color: #008170;border-color: #008170; height: auto; font-size: 10px; margin: 2px;" (click)="openEditDialog(appointment.slot.user.id)">Edit</button>
+            style="background-color: #008170;border-color: #008170; height: auto; font-size: 10px; margin: 2px;" (click)="openEditDialog(appointment.slot.user.id,appointment.id)">Edit</button>
           <button class="col btn btn-primary" (click)="cancelApooinment(appointment.id)"
             style="background-color: red;border-color: red; height: auto; font-size: 10px;margin: 2px;" >Cancel</button>
         </div>

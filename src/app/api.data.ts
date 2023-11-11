@@ -10,5 +10,5 @@ export class ApiData {
   static appointment = "/appointment/";
   static myAppointment = "/appointment";
   static geeDoctorSlotById = "/user/getSlotByDrId/";
-
+  static updateAppointment = "/appointment/updateAppointment/";
 }

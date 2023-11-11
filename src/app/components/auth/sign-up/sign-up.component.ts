@@ -235,9 +235,6 @@ Please enter password should
     return isSuccess;
 
   }
-
-
-
   isPasswordValid(password: string): boolean {
     var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     return passwordPattern.test(password);
@@ -252,8 +249,6 @@ Please enter password should
   isPasswordMatching(password: string, cPassword: string) {
     return password == cPassword;
   }
-
-
 
 
   addNewUser(body: SignUpRequestBody): Observable<SignUpResponseBody> {

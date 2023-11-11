@@ -13,6 +13,7 @@ import {AppoinmentNavDoctorComponent} from "./components/appoinment-nav-doctor/a
 import {MajorsNavPatientComponent} from "./components/majors-nav-patient/majors-nav-patient.component";
 import {HomeNavPatientComponent} from "./components/home-nav-patient/home-nav-patient.component";
 import {AppoinmentsNavPatientComponent} from "./components/appoinments-nav-patient/appoinments-nav-patient.component";
+import {MessagesNavDoctorComponent} from "./components/messages-nav-doctor/messages-nav-doctor.component";
 
 const routes: Routes = [
   {path: RoutesData.register, component: SignUpComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
       {path: RoutesData.doctorNavHome, component: HomeNavDoctorComponent,},
       {path: RoutesData.doctorNavPatients, component: PatientsNavDoctorComponent,},
       {path: RoutesData.appointmentNavPatients, component: AppoinmentNavDoctorComponent,},
+      {path: RoutesData.messagesDoctor, component: MessagesNavDoctorComponent,},
       {path: '', redirectTo: "home", pathMatch: "full"},
     ],
 

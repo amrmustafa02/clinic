@@ -37,6 +37,7 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { AppoinmentsNavPatientComponent } from './components/appoinments-nav-patient/appoinments-nav-patient.component';
 import { MatIconRegistry } from '@angular/material/icon';
 import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
+import { MessagesNavDoctorComponent } from './components/messages-nav-doctor/messages-nav-doctor.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import {MatBottomSheetModule} from "@angular/material/bottom-sheet";
     HomeNavPatientComponent,
     MajorsNavPatientComponent,
     AppoinmentsNavPatientComponent,
+    MessagesNavDoctorComponent,
   ],
   imports: [
     BrowserModule,
