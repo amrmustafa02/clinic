@@ -2,12 +2,15 @@ import {Component} from '@angular/core';
 
 import {UserUtils} from '../utils/user.utils';
 import {UserModel} from 'src/app/models/home-doctor/user.model';
-import {DatePipe} from '@angular/common';
+import {DatePipe, formatDate} from '@angular/common';
 import {Observable} from "rxjs/internal/Observable";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {ApiData} from "../../api.data";
 import {ToastrService} from "ngx-toastr";
 import {AddSlotResponseBody} from "../../models/home-doctor/add_slot_reponse_body";
+import {GetDoctorsResponseBody} from "../../models/patient/get_doctors_body";
+import {Slot, SlotsModel} from "../../models/home-doctor/slots.model";
+import {Format} from "@angular-devkit/build-angular/src/builders/extract-i18n/schema";
 
 @Component({
   selector: 'app-home-nav-doctor',
@@ -17,12 +20,18 @@ import {AddSlotResponseBody} from "../../models/home-doctor/add_slot_reponse_bod
 })
 export class HomeNavDoctorComponent {
   time? = new Date();
+
   user?: UserModel;
+
+  todaySlot?: Slot[];
+
 
   constructor(private http: HttpClient, private toast: ToastrService) {
     this.user = UserUtils.user;
     // this.user.name;
     console.log("userr");
+    this.getToadySlots().then(r => {
+    });
 
   }
 
@@ -48,6 +57,9 @@ export class HomeNavDoctorComponent {
         (data) => {
           console.log(data);
           this.toast.success("Add Successfully")
+        }, (error: HttpErrorResponse) => {
+          this.toast.error(error.error["mesgError"])
+
         }
       );
     }
@@ -69,4 +81,49 @@ export class HomeNavDoctorComponent {
     }, requestOptions);
   }
 
+  async getToadySlots(): Promise<void> {
+    await this.getSlotsUser();
+
+
+  }
+
+  formatDate(date: string, format: string) {
+
+    const datepipe: DatePipe = new DatePipe('en-US')
+
+    const dat = Date.parse(date);
+
+    // let formattedDate = datepipe.transform(dat, 'MMMM, dd EEE, YYYY')
+
+    let formattedDate = datepipe.transform(dat, format);
+
+    // console.log(formattedDate);
+
+    return formattedDate;
+  }
+
+  async getSlotsUser() {
+
+    this.http.get<SlotsModel>(ApiData.baseUrl + "/slot",
+      {
+        headers: {
+          "authenticated": "key_" + UserUtils.token
+        }
+      }).subscribe(
+      (data) => {
+        // this.todaySlot = data.slots;
+        console.log(data);
+
+        const toadyDate = this.formatDate(Date(), "MMMM dd YYYY");
+        for (let i = 0; i < data.slots!.length; i++) {
+          const slotDate = this.formatDate(data.slots![i].date, "MMMM dd YYYY");
+          if (slotDate == toadyDate) {
+            this.todaySlot!.push(data.slots[i]);
+          }
+        }
+      }
+    );
+  }
+
+  protected readonly Date = Date;
 }
