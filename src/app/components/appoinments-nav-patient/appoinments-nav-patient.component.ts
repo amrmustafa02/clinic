@@ -19,6 +19,7 @@ import {FormLabelDirective} from "@coreui/angular";
 })
 export class AppoinmentsNavPatientComponent {
 
+  static baseList: Appointment[] = [];
   appointments?: Appointment[] = [];
 
 
@@ -38,32 +39,62 @@ export class AppoinmentsNavPatientComponent {
       (data) => {
         console.log(data);
         this.appointments = data.appointments;
+        AppoinmentsNavPatientComponent.baseList = this.appointments;
         // this.appointments[0].slot.date
       }
     );
   }
 
   search(name: string) {
-    this.http.get<GetAppointmentResponseBody>(ApiData.baseUrl + ApiData.myAppointment, {
-      headers: {
-        "authenticated": "key_" + UserUtils.token
-      }
-    }).subscribe(
-      (data) => {
-        console.log(data);
-        this.appointments = data.appointments;
-        this.appointments[0].slot.date
-        for (let i = 0; i < this.appointments!.length; i++) {
-          if (this.appointments![i].slot.user.name.includes(name)) {
-            console.log(i);
-            console.log(this.appointments.length);
-            this.appointments!.slice(i, 1);
-            // i--;
-          }
-        }
+    if (name.length == 0) {
+      this.myAppointment();
+      return;
+    }
+
+    console.log(name);
+
+    const copy =   AppoinmentsNavPatientComponent.baseList;
+    this.appointments = [];
+
+    for (let i = 0; i < copy!.length; i++) {
+      console.log("nuuur");
+      if (copy![i].slot.user.name.includes(name)) {
+
+        console.log(copy![i].slot.user);
+
+        this.appointments!.push(copy![i]);
 
       }
-    );
+
+    }
+    // console.log(this.appointments)
+
+
+    // this.appointments!.slice(1,1);
+
+    // console.log(this.appointments)
+
+    //
+    // this.http.get<GetAppointmentResponseBody>(ApiData.baseUrl + ApiData.myAppointment, {
+    //   headers: {
+    //     "authenticated": "key_" + UserUtils.token
+    //   }
+    // }).subscribe(
+    //   (data) => {
+    //     console.log(data);
+    //     this.appointments = data.appointments;
+    //     // this.appointments[0].slot.date
+    //     // for (let i = 0; i < this.appointments!.length; i++) {
+    //     //   if (this.appointments![i].slot.user.name.includes(name)) {
+    //     //     console.log(i);
+    //     //     console.log(this.appointments.length);
+    //     //     this.appointments!.slice(i, 1);
+    //     //     i--;
+    //     //   }
+    //     // }
+    //
+    //   }
+    // );
 
   }
 
