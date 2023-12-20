@@ -13,6 +13,17 @@ RUN npm run build --prod
 
 
 # second stage
-FROM nginx:alpine
+FROM nginxinc/nginx-unprivileged:alpine3.18-perl
 
-COPY --from=build /app/dist/clinic-reservation  /usr/share/nginx/html
+USER root
+
+RUN touch /tmp/nginx.pid
+
+RUN chmod 777 /tmp/nginx.pid
+
+USER nginx
+
+COPY --from=build /app/dist/test-docker-1  /usr/share/nginx/html
+
+ARG API_URL
+RUN sed -i "s|$API_URL|${API_URL}|g" /var/www/html/main*.js

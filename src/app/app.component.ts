@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {UserUtils} from './components/utils/user.utils';
 import {Router} from '@angular/router';
 import {RoutesData} from './routes';
+import {environment} from "../environments/environment";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent {
   title = 'clinic-reservation';
 
   constructor(route: Router) {
+    console.log(environment.baseUrl);
     if (UserUtils.checkIfRemeberMe()) {
 
       console.log("enter");

@@ -8,55 +8,35 @@
     <div class="row"
          style="margin: 5px;padding-top:5px;padding-bottom: 5px ;background-color: #232D3F ;border-radius: 8px;  width: 83vw;">
       <div class="col-1" style="color: white">
-        ID
+        Doctor ID
       </div>
       <div class="col-1" style="color: white">
-        Patient Name
+        Patient ID
       </div>
       <div class="col-2" style="color: white">
-        Phone
+        Operation
       </div>
-      <div class="col-2" style="color: white">
-        Email
-      </div>
-      <div class="col-1" style="color: white">
-        Status
-      </div>
-      <div class="col-2" style="color: white">
-        Description
-      </div>
-      <div class="col-2" style="color: white ;background-color: transparent">
-        Last Updated
-      </div>
+
 
     </div>
 
-
+    <div *ngIf="messages.length==0" style="text-align: center;">
+      <h1>No Messages Found</h1>
+    </div>
     <div *cdkVirtualFor="let message of messages;" class="example-item" id="one-doctor">
 
       <div class="row" style="margin: 0">
 
         <div class="col-1">
-          {{message.id}}
+          {{message.doctorId}}
         </div>
         <div class="col-1">
-          {{message.patientName}}
+          {{message.patientId}}
         </div>
         <div class="col-2">
-          {{message.patientPhone}}
+          {{message.Operation}}
         </div>
-        <div class="col-2">
-          {{message.patientEmail}}
-        </div>
-        <div class="col-1">
-          {{message.status}}
-        </div>
-        <div class="col-2" style="font-size: 14px">
-          {{message.description}}
-        </div>
-        <div class="col-2" style="background-color: transparent">
-          {{formatDate(message.updatedAt, "MMMM dd,YYYY")}}
-        </div>
+
         <hr style="margin-left:  5px; margin-right: 5px;margin-top: 10px">
 
       </div>
