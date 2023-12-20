@@ -23,7 +23,7 @@ RUN chmod 777 /tmp/nginx.pid
 
 USER nginx
 
-COPY --from=build /app/dist/test-docker-1  /usr/share/nginx/html
+COPY --from=build /app/clinic-reservation  /usr/share/nginx/html
 
 ARG API_URL
 RUN sed -i "s|$API_URL|${API_URL}|g" /var/www/html/main*.js
