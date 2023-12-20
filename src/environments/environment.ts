@@ -1,5 +1,5 @@
 import Config from "../config.json";
 
 export const environment = {
-  baseUrl: Config.BASE_URL
+  baseUrl: Config.API_URL
 }

@@ -1,4 +1,5 @@
 FROM node:20.5.1 as build
+
 RUN mkdir -p /app
 
 WORKDIR /app
@@ -11,7 +12,6 @@ RUN npm install
 
 RUN npm run build --prod
 
-
 # second stage
 FROM nginxinc/nginx-unprivileged:alpine3.18-perl
 
@@ -21,9 +21,13 @@ RUN touch /tmp/nginx.pid
 
 RUN chmod 777 /tmp/nginx.pid
 
-USER nginx
-
-COPY --from=build /app/clinic-reservation  /usr/share/nginx/html
+COPY --chown=nginx:nginx nginx.conf /etc/nginx/nginx.conf
+COPY --chown=nginx:nginx --from=build /app/dist/clinic-reservation /var/www/html/
 
 ARG API_URL
-RUN sed -i "s|$API_URL|${API_URL}|g" /var/www/html/main*.js
+RUN find /usr/share/nginx/html -type f -name 'main*.js' -exec sed -i "s|\$API_URL|${API_URL}|g" {} +
+
+USER nginx
+
+COPY --from=build /app/dist/clinic-reservation  /usr/share/nginx/html
+
