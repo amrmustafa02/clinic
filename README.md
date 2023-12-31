@@ -20,13 +20,13 @@ Simple Clinic Reservation website
 -  Login & Register
 -  Search about about
 -  Reserve appointment
--  Show ةedical specialties
+-  Show medical specialties
 -  Can cancel & edit in appointment
 -  Show all reservtions
 ## About project
 - Using angular framework in develpoment
 - Using SQL db in backend
-- linke API -> https://clinicreservation.onrender.com
+- link API -> https://clinicreservation.onrender.com
 - Develpoer profile who develop backend [Mohammed anas](https://github.com/mohamedanas00)
 
 ## 🚀 About Me
