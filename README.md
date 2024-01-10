@@ -27,7 +27,7 @@ Simple Clinic Reservation website
 - Using angular framework in develpoment
 - Using SQL db in backend
 - link API -> https://clinicreservation.onrender.com
-- Develpoer profile who develop backend [Mohammed anas](https://github.com/mohamedanas00)
+- Develpoers profile who develop backend [Mohammed anas](https://github.com/mohamedanas00) and [Mohammed Ahmed](https://github.com/M-twally)
 
 ## 🚀 About Me
 Hi, 👋👋 I’m Amr Mustafa, Flutter developer with +1 year of experience. I have completed many projects that prove my ability to provide creative and high-quality solutions."
