@@ -46,7 +46,7 @@ export class MessagesNavDoctorComponent {
     return formattedDate;
   }
   getMessages() {
-    this.http.get<GetMessagesResponseBody>(ApiData.baseUrl + "/message/rabbitMessages", {
+    this.http.get<GetMessagesResponseBody>(ApiData.baseUrl + "/message", {
       headers: {
         "authenticated": "key_" + UserUtils.token
       }
