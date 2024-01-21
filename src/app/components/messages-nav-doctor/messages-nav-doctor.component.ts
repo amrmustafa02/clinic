@@ -46,7 +46,7 @@ export class MessagesNavDoctorComponent {
     return formattedDate;
   }
   getMessages() {
-    this.http.get<GetMessagesResponseBody>(ApiData.baseUrl + "/getAllMessagingFeature", {
+    this.http.get<GetMessagesResponseBody>(ApiData.baseUrl + "/message/getAllMessagingFeature", {
       headers: {
         "authenticated": "key_" + UserUtils.token
       }
